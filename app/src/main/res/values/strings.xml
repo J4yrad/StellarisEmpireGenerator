@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Stellaris Empire Generator</string>
+    <string name="button_create_new">Generate A New Empire</string>
+    <string name="button_view_saved">View Created Empires</string>
+    <string-array name="Names">
+        <item>Name1</item>
+        <item>Name2</item>
+        <item>Name3</item>
+    </string-array>
+    <string-array name="EmpireNames">
+        <item>EmpireName1</item>
+        <item>EmpireName2</item>
+        <item>EmpireName3</item>
+    </string-array>
+    <string-array name="Biographies">
+        <item>Bio1</item>
+        <item>Bio2</item>
+        <item>Bio3</item>
+    </string-array>
+    <string-array name="NameLists">
+        <item>NameList1</item>
+        <item>NameList2</item>
+        <item>NameList3</item>
+    </string-array>
+    <string-array name="CitySet">
+        <item>CitySet1</item>
+        <item>CitySet2</item>
+        <item>CitySet3</item>
+    </string-array>
+    <string-array name="AdvisorVoices">
+        <item>Advisor1</item>
+        <item>Advisor2</item>
+        <item>Advisor3</item>
+    </string-array>
+    <string-array name="Shipsets">
+        <item>Shipset1</item>
+        <item>Shipset2</item>
+        <item>Shipset3</item>
+    </string-array>
+</resources>

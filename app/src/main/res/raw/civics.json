@@ -1,0 +1,284 @@
+{
+  "civics": [
+    {
+      "civicName": "Agrarian Idyll",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Syncretic Evolution","Slaver Guilds","Post-Apocalyptic"],
+      "RequiredEthics":"Pacifist1||Pacifist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Aristocratic Elite",
+      "IncompatibleAuthority":["Egalitarian"],
+      "RequiredAuthority":["Oligarchic","Imperial"],
+      "IncompatibleCivics":["Exalted Priesthood","Merchant Guilds","Technocracy","Byzantine Bureaucracy"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Beacon of Liberty",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Democratic"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Egalitarian1||Egalitarian2",
+      "IncompatibleEthics":["Xenophobe","Fanatic Xenophobe"]
+    },
+    {
+      "civicName": "Citizen Service",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Democratic","Oligarchic"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":["Fanatic Xenophile"]
+    },
+    {
+      "civicName": "Corvée System",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Free Haven"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":["Egalitarian","Fanatic Egalitarian"]
+    },
+    {
+      "civicName": "Cutthroat Politics",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Distinguished Admiralty ",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Efficient Bureaucracy",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Environmentalist",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Exalted Priesthood",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Oligarchic","Dictatorial"],
+      "IncompatibleCivics":["Aristocratic Elite","Merchant Guilds","Technocracy","Byzantine Bureaucracy"],
+      "RequiredEthics":"Spiritualist1||Spiritualist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Feudal Society",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Imperial"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Free Haven",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Xenophile1||Xenophile2",
+      "IncompatibleEthics":["Corvée System"]
+    },
+    {
+      "civicName": "Functional Architecture",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Idealistic Foundation",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Egalitarian1||Egalitarian2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Imperial Cult",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Imperial"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"(Authoritarian1||Authoritarian2)&&(Spiritualist1||Spiritualist2)",
+      "IncompatibleEthics":["Materialist","Fanatic Materialist"]
+    },
+    {
+      "civicName": "Inward Perfection",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"(Pacifist1||Pacifist2)&&(Xenophobe1||Xenophobe2)",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Meritocracy",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Democratic","Oligarchic"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Mining Guilds",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Nationalistic Zeal",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Parliamentary System",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Democratic"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Philosopher King",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Dictatorial","Imperial"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Police State",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":["Fanatic Egalitarian"]
+    },
+    {
+      "civicName": "Shadow Council",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":["Dictatorial","Oligarchic","Democratic"],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Slaver Guilds",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Authoritarian1||Authoritarian2",
+      "IncompatibleEthics":["Syncretic Evolution"]
+    },
+    {
+      "civicName": "Technocracy",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Materialist1||Materialist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Warrior Culture",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Fanatic Purifiers",
+      "IncompatibleAuthority":[],
+      "IncompatibleCivics":["Mechanist","Syncretic Evolution","Barbaric Despoilers"],
+      "RequiredAuthority":[],
+      "RequiredEthics":"Xenophobe2&&(Militarist1||Spiritualist1)",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Mechanist",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Syncretic Evolution","Life-Seeded","Post-Apocalyptic"],
+      "RequiredEthics":"Materialist1||Materialist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Syncretic Evolution",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Mechanist","Fanatic Purifiers","Agrarian Idyll"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Life-Seeded",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Syncretic Evolution","Mechanist","Post-Apocalyptic"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Post-Apocalyptic",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Syncretic Evolution","Life-Seeded","Mechanist","Agrarian Idyll"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Barbaric Despoilers",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"(Militarist1||Militarist2)&&(Xenophobe1||Xenophobe2||Authoritarian1||Authoritarian2)",
+      "IncompatibleEthics":["Xenophile","Fanatic Xenophile"]
+    },
+    {
+      "civicName": "Byzantine Bureaucracy",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Aristocratic Elite","Merchant Guilds","Technocracy","Exalted Priesthood"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Merchant Guilds",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Aristocratic Elite","Exalted Priesthood","Technocracy","Byzantine Bureaucracy"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Shared Burdens",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Technocracy"],
+      "RequiredEthics":"Egalitarian2",
+      "IncompatibleEthics":["Xenophobe"]
+    }
+  ]
+}

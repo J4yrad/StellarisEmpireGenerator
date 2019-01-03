@@ -1,0 +1,179 @@
+{
+  "traits": [
+    {
+      "traitName": "Adaptive",
+      "pointValue": -2,
+      "IncompatibleTraits":["Extremely Adaptive","Nonadaptive"]
+    },
+    {
+      "traitName": "Extremely Adaptive",
+      "pointValue": -4,
+      "IncompatibleTraits":["Adaptive","Nonadaptive"]
+    },
+    {
+      "traitName": "Agrarian",
+      "pointValue": -2,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Charismatic",
+      "pointValue": -2,
+      "IncompatibleTraits":["Repugnant"]
+    },
+    {
+      "traitName": "Communal",
+      "pointValue": -1,
+      "IncompatibleTraits":["Solitary"]
+    },
+    {
+      "traitName": "Conformists",
+      "pointValue": -2,
+      "IncompatibleTraits":["Deviants"]
+    },
+    {
+      "traitName": "Enduring",
+      "pointValue": -2,
+      "IncompatibleTraits":["Fleeting","Venerable"]
+    },
+    {
+      "traitName": "Venerable",
+      "pointValue": -4,
+      "IncompatibleTraits":["Fleeting","Enduring"]
+    },
+    {
+      "traitName": "Conservationist",
+      "pointValue": -1,
+      "IncompatibleTraits":["Wasteful"]
+    },
+    {
+      "traitName": "Industrious",
+      "pointValue": -2,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Ingenious",
+      "pointValue": -2,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Intelligent",
+      "pointValue": -2,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Natural Engineers",
+      "pointValue": -1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Natural Physicists",
+      "pointValue": -1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Natural Sociologists",
+      "pointValue": -1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Nomadic",
+      "pointValue": -1,
+      "IncompatibleTraits":["Sedentary"]
+    },
+    {
+      "traitName": "Quick Learners",
+      "pointValue": -1,
+      "IncompatibleTraits":["Slow Learners"]
+    },
+    {
+      "traitName": "Rapid Breeders",
+      "pointValue": -2,
+      "IncompatibleTraits":["Slow Breeders"]
+    },
+    {
+      "traitName": "Resilient",
+      "pointValue": -1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Strong",
+      "pointValue": -2,
+      "IncompatibleTraits":["Very Strong","Weak"]
+    },
+    {
+      "traitName": "Very Strong",
+      "pointValue": -4,
+      "IncompatibleTraits":["Strong","Weak"]
+    },
+    {
+      "traitName": "Talented",
+      "pointValue": -1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Thrifty",
+      "pointValue": -2,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Traditional",
+      "pointValue": -1,
+      "IncompatibleTraits":["Quarrelsome"]
+    },
+    {
+      "traitName": "Decadent",
+      "pointValue": 1,
+      "IncompatibleTraits":[]
+    },
+    {
+      "traitName": "Nonadaptive",
+      "pointValue": 2,
+      "IncompatibleTraits":["Adaptive","Very Adaptive"]
+    },
+    {
+      "traitName": "Repugnant",
+      "pointValue": 2,
+      "IncompatibleTraits":["Charismatic"]
+    },
+    {
+      "traitName": "Deviants",
+      "pointValue": 1,
+      "IncompatibleTraits":["Conformists"]
+    },
+    {
+      "traitName": "Fleeting",
+      "pointValue": 1,
+      "IncompatibleTraits":["Venerable","Enduring"]
+    },
+    {
+      "traitName": "Quarrelsome",
+      "pointValue": 1,
+      "IncompatibleTraits":["Traditional"]
+    },
+    {
+      "traitName": "Sedentary",
+      "pointValue": 1,
+      "IncompatibleTraits":["Nomadic"]
+    },
+    {
+      "traitName": "Slow Breeders",
+      "pointValue": 2,
+      "IncompatibleTraits":["Rapid Breeders"]
+    },
+    {
+      "traitName": "Solitary",
+      "pointValue": 1,
+      "IncompatibleTraits":["Communal"]
+    },
+    {
+      "traitName": "Wasteful",
+      "pointValue": 1,
+      "IncompatibleTraits":["Conservationist"]
+    },
+    {
+      "traitName": "Weak",
+      "pointValue": 1,
+      "IncompatibleTraits":["Strong","Very Strong"]
+    }
+  ]
+}

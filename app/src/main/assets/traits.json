@@ -1,0 +1,9 @@
+{
+  "traits": [
+    {
+      "traitName": "exampleTrait",
+      "traitPoints": 2,
+      "incompatibleTraits":[]
+    }
+  ]
+}
