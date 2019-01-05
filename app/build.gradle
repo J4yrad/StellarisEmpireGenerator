@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.myfistapp"
+        applicationId "com.example.StellarisEmpireGenerator"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1

@@ -37,4 +37,47 @@
         <item>Shipset2</item>
         <item>Shipset3</item>
     </string-array>
+    <string-array name="HomeworldTypes">
+        <item>Arid</item>
+        <item>Desert</item>
+        <item>Savanna</item>
+        <item>Alpine</item>
+        <item>Artic</item>
+        <item>Tundra</item>
+        <item>Tropical</item>
+        <item>Continental</item>
+        <item>Ocean</item>
+    </string-array>
+    <string-array name="PlanetNames">
+        <item>Planet 1</item>
+        <item>Planet 2</item>
+        <item>Planet 3</item>
+        <item>Planet 4</item>
+        <item>Planet 5</item>
+        <item>Planet 6</item>
+        <item>Planet 7</item>
+        <item>Planet 8</item>
+        <item>Planet 9</item>
+    </string-array>
+    <string-array name="StarNames">
+        <item>Star 1</item>
+        <item>Star 2</item>
+        <item>Star 3</item>
+        <item>Star 4</item>
+        <item>Star 5</item>
+        <item>Star 6</item>
+        <item>Star 7</item>
+        <item>Star 8</item>
+        <item>Star 9</item>
+    </string-array>
+    <string-array name="SpecialSystems">
+        <item>Unary 1</item>
+        <item>Unary 2</item>
+        <item>Binary 1</item>
+        <item>Binary 2</item>
+        <item>Trinary 1</item>
+        <item>Trinary 2</item>
+    </string-array>
+
+
 </resources>

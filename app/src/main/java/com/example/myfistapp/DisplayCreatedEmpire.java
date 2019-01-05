@@ -1,11 +1,16 @@
 package com.example.myfistapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,29 +31,96 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
 
         TextView EmpireName = findViewById(R.id.EmpireName);
         TextView Name = findViewById(R.id.Name);
-        TextView Bio = findViewById(R.id.Bio);
-        TextView NameList = findViewById(R.id.NameList);
         TextView Cityset = findViewById(R.id.Cityset);
-        TextView AdvisorVoice = findViewById(R.id.AdvisorVoice);
         TextView Shipset = findViewById(R.id.Shipset);
         TextView Ethics = findViewById(R.id.Ethics);
-        TextView Traits = findViewById(R.id.traits);
+        TextView Trait1 = findViewById(R.id.trait1);
+        TextView Trait2 = findViewById(R.id.trait2);
+        TextView Trait3 = findViewById(R.id.trait3);
+        TextView Trait4 = findViewById(R.id.trait4);
+        TextView Trait5 = findViewById(R.id.trait5);
         TextView Authority = findViewById(R.id.Authority);
         TextView Civics = findViewById(R.id.Civics);
+        ImageView AuthImage = findViewById(R.id.authImg);
+        ImageView Trait1Icon = findViewById(R.id.trait1Icon);
+        ImageView Trait2Icon = findViewById(R.id.trait2Icon);
+        ImageView Trait3Icon = findViewById(R.id.trait3Icon);
+        ImageView Trait4Icon = findViewById(R.id.trait4Icon);
+        ImageView Trait5Icon = findViewById(R.id.trait5Icon);
         EmpireObject newEmpire = new EmpireObject();
         generateRandomEmpire(newEmpire);
         String[] EmpireAttributes = newEmpire.getEmpireAttributes();
         EmpireName.setText(newEmpire.toString());
         Name.setText(EmpireAttributes[0]);
-        Bio.setText(EmpireAttributes[1]);
-        NameList.setText(EmpireAttributes[2]);
         Cityset.setText(EmpireAttributes[3]);
-        AdvisorVoice.setText(EmpireAttributes[4]);
         Shipset.setText(EmpireAttributes[5]);
         Ethics.setText(createMultiLineText(newEmpire.getEmpireEthics()));
-        Traits.setText(createMultiLineText(newEmpire.getEmpireTraits()));
+        String[] newTraits = newEmpire.getEmpireTraits();
+        Trait1.setText(newTraits[0]);
+        Trait2.setText(newTraits[1]);
+        Trait3.setText(newTraits[2]);
+        Trait4.setText(newTraits[3]);
+        Trait5.setText(newTraits[4]);
         Authority.setText(newEmpire.getAuthority());
         Civics.setText(createMultiLineText(newEmpire.getEmpireCivics()));
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase());
+            AuthImage.setImageBitmap(BitmapFactory.decodeResource(getResources(),field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e("auth_"+newEmpire.getAuthority().toLowerCase()+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            if(newTraits[0] != null) {
+                Field field = res.getField("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_"));
+                Trait1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            if(newTraits[1] != null) {
+                Field field = res.getField("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_"));
+                Trait2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            if(newTraits[2] != null) {
+                Field field = res.getField("trait_" + newTraits[2].toLowerCase().replaceAll(" ","_"));
+                Trait3Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("trait_" + newTraits[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            if(newTraits[3] != null) {
+                Field field = res.getField("trait_" + newTraits[3].toLowerCase().replaceAll(" ","_"));
+                Trait4Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("trait_" + newTraits[3].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            if(newTraits[4] != null) {
+                Field field = res.getField("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_"));
+                Trait5Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
     }
 
     public void generateRandomEmpire(EmpireObject newEmpire){
@@ -63,15 +135,16 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String randomNameList = choiceArray[new Random().nextInt(choiceArray.length)];
         choiceArray = getResources().getStringArray(R.array.CitySet);
         String randomCityset = choiceArray[new Random().nextInt(choiceArray.length)];
-        choiceArray = getResources().getStringArray(R.array.AdvisorVoices);
-        String randomAdvisorVoice = choiceArray[new Random().nextInt(choiceArray.length)];
+        choiceArray = getResources().getStringArray(R.array.AdvisorVoices);        String randomAdvisorVoice = choiceArray[new Random().nextInt(choiceArray.length)];
         choiceArray = getResources().getStringArray(R.array.Shipsets);
         String randomShipset = choiceArray[new Random().nextInt(choiceArray.length)];
         String[] randomEthics = generateEthics();
         TraitModel.TraitObject[] randomTraits = generateTraits();
         String randomAuthority = generateAuthority(randomEthics);
         CivicModel.CivicObject[] randomCivics = generateCivics(randomAuthority,randomEthics);
-        newEmpire.setEmpireAttributes(randomName,randomEmpireName,randomBio,randomNameList,randomCityset,randomAdvisorVoice,randomShipset,randomEthics,randomTraits,randomAuthority,randomCivics);
+        HomeworldObject randomHomeworld = generateHomeworld(randomCivics);
+        newEmpire.setEmpireAttributes(randomName,randomEmpireName,randomBio,randomNameList,randomCityset,randomAdvisorVoice,randomShipset,
+                randomEthics,randomTraits,randomAuthority,randomCivics, randomHomeworld);
 
     }
     public String createMultiLineText(String[] text){
@@ -327,5 +400,20 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         context.set("false", false);
         Boolean result = (Boolean) jExpression.evaluate(context);
         return result;
+    }
+    public HomeworldObject generateHomeworld(CivicModel.CivicObject[] civics){
+        String[] PlanetTypes = getResources().getStringArray(R.array.HomeworldTypes);
+        String[] StarNames = getResources().getStringArray(R.array.StarNames);
+        String[] Systems = getResources().getStringArray(R.array.SpecialSystems);
+        String[] PlanetNames = getResources().getStringArray(R.array.PlanetNames);
+        String HomeworldType = PlanetTypes[new Random().nextInt(PlanetTypes.length)]+" World";
+        String PlanetName = PlanetNames[new Random().nextInt(PlanetNames.length)];
+        String StarName =  StarNames[new Random().nextInt(StarNames.length)];
+        String SystemType = Systems[new Random().nextInt(Systems.length)];
+        for(CivicModel.CivicObject civic: civics){
+            if(civic.equals("Life Seeded")) HomeworldType = "Gaia World";
+            else if(civic.equals("Post-Apocalyptic")) HomeworldType = "Tomb World";
+        }
+        return new HomeworldObject(HomeworldType,PlanetName,StarName,SystemType);
     }
 }

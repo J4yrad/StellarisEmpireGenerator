@@ -10,6 +10,16 @@ import java.util.UUID;
 
 class HomeworldObject{
     private String Type,Name,Star,SpecialSystem;
+    public String toString(){ return this.Name; }
+    public String getType(){ return this.Type;}
+    public String getStar(){ return this.Star;}
+    public String getSpecialSystem(){return  this.SpecialSystem;}
+    HomeworldObject(String type,String name, String star, String specialSystem){
+        this.Type = type;
+        this.Name = name;
+        this.Star = star;
+        this.SpecialSystem = specialSystem;
+    }
 }
 class CivicModel{
     @SerializedName("civics")
@@ -31,6 +41,8 @@ class CivicModel{
         @SerializedName("RequiredEthics")
         private String RequiredEthics;
 
+        public boolean equals(CivicObject civic){return this.civicName == civic.civicName;}
+        public boolean equals(String civic){return this.civicName.equals(civic);}
         public String toString(){
             return this.civicName;
         }
@@ -107,7 +119,7 @@ public class EmpireObject {
     private String[] Ethics = new String[3];
     private TraitModel.TraitObject[] Traits;
     private CivicModel.CivicObject[] Civics;
-    //private HomeworldObject Homeworld;
+    private HomeworldObject Homeworld;
 
 
 
@@ -122,7 +134,8 @@ public class EmpireObject {
     public void setEthics(String[] ethics){
         this.Ethics = ethics;
     }
-    public void setEmpireAttributes(String Name, String EmpireName, String Biography, String NameList, String Cityset, String AdvisorVoice, String Shipset, String[] Ethics, TraitModel.TraitObject[] Traits, String Authority, CivicModel.CivicObject[] Civics){
+    public void setEmpireAttributes(String Name, String EmpireName, String Biography, String NameList, String Cityset, String AdvisorVoice,
+                                    String Shipset, String[] Ethics, TraitModel.TraitObject[] Traits, String Authority, CivicModel.CivicObject[] Civics, HomeworldObject Homeworld){
         this.Name = Name;
         this.EmpireName = EmpireName;
         this.Biography = Biography;
@@ -134,6 +147,7 @@ public class EmpireObject {
         this.Traits = Traits;
         this.Authority = Authority;
         this.Civics = Civics;
+        this.Homeworld = Homeworld;
     }
 
     public String[] getEmpireAttributes(){
