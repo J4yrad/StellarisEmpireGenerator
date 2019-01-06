@@ -40,13 +40,16 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         TextView Trait4 = findViewById(R.id.trait4);
         TextView Trait5 = findViewById(R.id.trait5);
         TextView Authority = findViewById(R.id.Authority);
-        TextView Civics = findViewById(R.id.Civics);
+        TextView Civic1 = findViewById(R.id.Civic1);
+        TextView Civic2 = findViewById(R.id.Civic2);
         ImageView AuthImage = findViewById(R.id.authImg);
         ImageView Trait1Icon = findViewById(R.id.trait1Icon);
         ImageView Trait2Icon = findViewById(R.id.trait2Icon);
         ImageView Trait3Icon = findViewById(R.id.trait3Icon);
         ImageView Trait4Icon = findViewById(R.id.trait4Icon);
         ImageView Trait5Icon = findViewById(R.id.trait5Icon);
+        ImageView Civic1Icon = findViewById(R.id.civic1Icon);
+        ImageView Civic2Icon = findViewById(R.id.civic2Icon);
         EmpireObject newEmpire = new EmpireObject();
         generateRandomEmpire(newEmpire);
         String[] EmpireAttributes = newEmpire.getEmpireAttributes();
@@ -62,7 +65,9 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         Trait4.setText(newTraits[3]);
         Trait5.setText(newTraits[4]);
         Authority.setText(newEmpire.getAuthority());
-        Civics.setText(createMultiLineText(newEmpire.getEmpireCivics()));
+        String[] newCivics = newEmpire.getEmpireCivics();
+        Civic1.setText(newCivics[0]);
+        Civic2.setText(newCivics[1]);
         try {
             Class res = R.mipmap.class;
             Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase());
@@ -120,6 +125,22 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         }
         catch (Exception e) {
             Log.e("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+                Field field = res.getField("civic_" + newCivics[0].toLowerCase().replaceAll(" ","_"));
+                Civic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e("civic_" + newCivics[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_"));
+            Civic2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
         }
     }
 

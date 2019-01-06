@@ -4,7 +4,7 @@
       "civicName": "Agrarian Idyll",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
-      "IncompatibleCivics":["Syncretic Evolution","Slaver Guilds","Post-Apocalyptic"],
+      "IncompatibleCivics":["Syncretic Evolution","Slaver Guilds","Post Apocalyptic"],
       "RequiredEthics":"Pacifist1||Pacifist2",
       "IncompatibleEthics":[]
     },
@@ -33,7 +33,7 @@
       "IncompatibleEthics":["Fanatic Xenophile"]
     },
     {
-      "civicName": "Corvée System",
+      "civicName": "Corvee System",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
       "IncompatibleCivics":["Free Haven"],
@@ -94,7 +94,7 @@
       "RequiredAuthority":[],
       "IncompatibleCivics":[],
       "RequiredEthics":"Xenophile1||Xenophile2",
-      "IncompatibleEthics":["Corvée System"]
+      "IncompatibleEthics":["Corvee System"]
     },
     {
       "civicName": "Functional Architecture",
@@ -220,7 +220,7 @@
       "civicName": "Mechanist",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
-      "IncompatibleCivics":["Syncretic Evolution","Life-Seeded","Post-Apocalyptic"],
+      "IncompatibleCivics":["Syncretic Evolution","Life Seeded","Post Apocalyptic"],
       "RequiredEthics":"Materialist1||Materialist2",
       "IncompatibleEthics":[]
     },
@@ -233,18 +233,18 @@
       "IncompatibleEthics":[]
     },
     {
-      "civicName": "Life-Seeded",
+      "civicName": "Life Seeded",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
-      "IncompatibleCivics":["Syncretic Evolution","Mechanist","Post-Apocalyptic"],
+      "IncompatibleCivics":["Syncretic Evolution","Mechanist","Post Apocalyptic"],
       "RequiredEthics":"",
       "IncompatibleEthics":[]
     },
     {
-      "civicName": "Post-Apocalyptic",
+      "civicName": "Post Apocalyptic",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
-      "IncompatibleCivics":["Syncretic Evolution","Life-Seeded","Mechanist","Agrarian Idyll"],
+      "IncompatibleCivics":["Syncretic Evolution","Life Seeded","Mechanist","Agrarian Idyll"],
       "RequiredEthics":"",
       "IncompatibleEthics":[]
     },

@@ -100,15 +100,26 @@
             app:layout_constraintTop_toBottomOf="@+id/trait5" />
 
         <TextView
-            android:id="@+id/Civics"
+            android:id="@+id/Civic1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Civics"
+            android:text="civic1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/civic1Icon"
             app:layout_constraintTop_toBottomOf="@+id/Authority" />
+
+        <TextView
+            android:id="@+id/Civic2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="civic1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/civic2Icon"
+            app:layout_constraintTop_toBottomOf="@+id/Civic1" />
 
         <TextView
             android:id="@+id/trait1"
@@ -226,6 +237,32 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/trait4" />
+
+        <ImageView
+            android:id="@+id/civic1Icon"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/Civic1"
+            app:layout_constraintEnd_toStartOf="@+id/Civic1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Authority" />
+
+        <ImageView
+            android:id="@+id/civic2Icon"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/Civic2"
+            app:layout_constraintEnd_toStartOf="@+id/Civic2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/civic1Icon" />
 
 
     </android.support.constraint.ConstraintLayout>
