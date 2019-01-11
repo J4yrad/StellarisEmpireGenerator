@@ -36,7 +36,7 @@
             android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EmpireName" />
+            app:layout_constraintTop_toBottomOf="@+id/portrait" />
 
         <TextView
             android:id="@+id/Cityset"
@@ -62,12 +62,12 @@
             android:id="@+id/Ethics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Ethics"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Shipset" />
+            app:layout_constraintTop_toBottomOf="@+id/EthicIcon2" />
 
         <TextView
             android:id="@+id/traits"
@@ -263,6 +263,63 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/civic1Icon" />
+
+        <ImageView
+            android:id="@+id/portrait"
+            android:layout_width="112dp"
+            android:layout_height="143dp"
+            android:layout_marginTop="16dp"
+            android:background="@mipmap/backgroundframe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EmpireName" />
+
+        <ImageView
+            android:id="@+id/EthicIcon1"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/EthicIcon2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Shipset" />
+
+        <ImageView
+            android:id="@+id/EthicIcon2"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/EthicIcon3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/EthicIcon1"
+            app:layout_constraintTop_toBottomOf="@+id/Shipset" />
+
+        <ImageView
+            android:id="@+id/EthicIcon3"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/EthicIcon2"
+            app:layout_constraintTop_toBottomOf="@+id/Shipset" />
+
+        <Button
+            android:id="@+id/saveButton"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="56dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="312dp"
+            android:layout_marginTop="624dp"
+            android:layout_marginEnd="8dp"
+            android:text="save"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

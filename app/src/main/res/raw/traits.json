@@ -128,7 +128,7 @@
     {
       "traitName": "Nonadaptive",
       "pointValue": 2,
-      "IncompatibleTraits":["Adaptive","Very Adaptive"]
+      "IncompatibleTraits":["Adaptive","Extremely Adaptive"]
     },
     {
       "traitName": "Repugnant",

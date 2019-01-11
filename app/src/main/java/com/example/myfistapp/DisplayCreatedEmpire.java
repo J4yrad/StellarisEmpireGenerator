@@ -1,10 +1,14 @@
 package com.example.myfistapp;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +33,8 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_created_empire);
 
+        EmpireViewModel mViewModel = ViewModelProviders.of(this).get(EmpireViewModel.class);
+
         TextView EmpireName = findViewById(R.id.EmpireName);
         TextView Name = findViewById(R.id.Name);
         TextView Cityset = findViewById(R.id.Cityset);
@@ -50,6 +56,11 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         ImageView Trait5Icon = findViewById(R.id.trait5Icon);
         ImageView Civic1Icon = findViewById(R.id.civic1Icon);
         ImageView Civic2Icon = findViewById(R.id.civic2Icon);
+        ImageView Portrait = findViewById(R.id.portrait);
+        ImageView Ethic1Icon = findViewById(R.id.EthicIcon1);
+        ImageView Ethic2Icon = findViewById(R.id.EthicIcon2);
+        ImageView Ethic3Icon = findViewById(R.id.EthicIcon3);
+        Button SaveButton = findViewById(R.id.saveButton);
         EmpireObject newEmpire = new EmpireObject();
         generateRandomEmpire(newEmpire);
         String[] EmpireAttributes = newEmpire.getEmpireAttributes();
@@ -68,6 +79,12 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String[] newCivics = newEmpire.getEmpireCivics();
         Civic1.setText(newCivics[0]);
         Civic2.setText(newCivics[1]);
+        SaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               mViewModel.insertEmpire(newEmpire);
+            }
+        });
         try {
             Class res = R.mipmap.class;
             Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase());
@@ -142,6 +159,42 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         catch (Exception e) {
             Log.e("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
         }
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField(newEmpire.getPortrait()[0].toLowerCase()+newEmpire.getPortrait()[1]);
+            Portrait.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e(newEmpire.getPortrait()[0].toLowerCase()+newEmpire.getPortrait()[1]+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField("ethic_"+newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ","_"));
+            Ethic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e("ethic_"+newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            if(newEmpire.getEmpireEthics()[1] != null) {
+                Class res = R.mipmap.class;
+                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[1].toLowerCase().replaceAll(" ", "_"));
+                Ethic2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("ethic_"+newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
+        try {
+            if(newEmpire.getEmpireEthics()[2] != null) {
+                Class res = R.mipmap.class;
+                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ", "_"));
+                Ethic3Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
+        }
+        catch (Exception e) {
+            Log.e("ethic_"+newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
+        }
     }
 
     public void generateRandomEmpire(EmpireObject newEmpire){
@@ -164,8 +217,9 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String randomAuthority = generateAuthority(randomEthics);
         CivicModel.CivicObject[] randomCivics = generateCivics(randomAuthority,randomEthics);
         HomeworldObject randomHomeworld = generateHomeworld(randomCivics);
+        String[] randomPortrait = generatePortrait();
         newEmpire.setEmpireAttributes(randomName,randomEmpireName,randomBio,randomNameList,randomCityset,randomAdvisorVoice,randomShipset,
-                randomEthics,randomTraits,randomAuthority,randomCivics, randomHomeworld);
+                randomEthics,randomTraits,randomAuthority,randomCivics, randomHomeworld, randomPortrait);
 
     }
     public String createMultiLineText(String[] text){
@@ -284,45 +338,34 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String myJson=inputStreamToString(this.getResources().openRawResource(R.raw.traits));
         Gson gson = new Gson();
         traitModel = gson.fromJson(myJson,TraitModel.class);
-        TraitModel.TraitObject[] traits = traitModel.getTraits();
-        for(TraitModel.TraitObject trait: traits){
-            for (String IncompatibleTrait: trait.showIncompatibleTraits()){
-               trait.addIncompatibleTrait(findTrait(traits,IncompatibleTrait));
-            }
-        }
-        Set<TraitModel.TraitObject> AvailableTraits = new HashSet<>(Arrays.asList(traits));
+        List<TraitModel.TraitObject> availableTraits = new ArrayList<>(Arrays.asList(traitModel.getTraits()));
         int i = 0;
         while(i<5){
-            int random = new Random().nextInt(9);
-            if(random==8) break;
-            random = new Random().nextInt(AvailableTraits.size());
-            Iterator<TraitModel.TraitObject> it = AvailableTraits.iterator();
-            for (int j = 0; j < random; j++) {
-                it.next();
+            int random = new Random().nextInt(availableTraits.size());
+            if (availableTraits.get(random).getPointValue() + points >= 0){
+                TraitModel.TraitObject trait = availableTraits.get(random);
+                chosenTraits[i] = trait;
+                removeIncompatibleTraits(availableTraits,trait);
+                points += trait.getPointValue();
+                availableTraits.remove(trait);
             }
-            TraitModel.TraitObject newTrait = it.next();
-            if(newTrait.getPointValue()+points < 0) continue;
-            chosenTraits[place] = newTrait;
-            points += newTrait.getPointValue();
-            AvailableTraits.remove(newTrait);
-            if(newTrait.getIncompatibleTraits() != null) {
-                for (TraitModel.TraitObject SetTrait : newTrait.getIncompatibleTraits()) {
-                    if (AvailableTraits.contains(SetTrait)) AvailableTraits.remove(SetTrait);
-                }
-            }
-            place+=1;
+            else continue;
+            random = new Random().nextInt(9);
+            if (random == 8) break;
             i++;
+
         }
+        String traitJson = gson.toJson(chosenTraits);
+        TraitModel.TraitObject[] mytraitmodel = gson.fromJson(traitJson,TraitModel.TraitObject[].class);
         return chosenTraits;
 
     }
-    public TraitModel.TraitObject findTrait(TraitModel.TraitObject[] traits, String IncTrait){
-        for(TraitModel.TraitObject trait: traits){
-            if (IncTrait.equals(trait.toString())){
-                return trait;
-            }
-        }
-        return null;
+    public void removeIncompatibleTraits(List<TraitModel.TraitObject> availibleTraits, TraitModel.TraitObject trait){
+       List<String>incompatibleTraits = Arrays.asList(trait.showIncompatibleTraits());
+       for(int i=0;i<availibleTraits.size();i++){
+           if (incompatibleTraits.contains(availibleTraits.get(i))) availibleTraits.remove(availibleTraits.get(i));
+       }
+
     }
 
     public String inputStreamToString(InputStream inputStream) {
@@ -394,6 +437,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         removeIncompatibleCivics(availableCivics,chosenCivics[0]);
         random = new Random().nextInt(availableCivics.size());
         chosenCivics[1] = availableCivics.get(random);
+        String civicJson = gson.toJson(chosenCivics);
         return chosenCivics;
     }
     public void removeIncompatibleCivics(List<CivicModel.CivicObject> availableCivics, CivicModel.CivicObject civic){
@@ -436,5 +480,24 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             else if(civic.equals("Post-Apocalyptic")) HomeworldType = "Tomb World";
         }
         return new HomeworldObject(HomeworldType,PlanetName,StarName,SystemType);
+    }
+    public String[] generatePortrait(){
+        List <String> PortraitClasses = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.PortraitClasses)));
+        int random = new Random().nextInt(PortraitClasses.size()-1);
+        String PortraitClass = PortraitClasses.get(random);
+        int[] portraits = {5,18,17,18,18,16,16,15,9};//Number of portraits in each species group{Humanoid,Mammalian,Reptilian,Avian,Arthropoid,Molluscoid,Fungoid,Plantoid,Synth}
+        switch(PortraitClass){
+            case"Humanoid":random = new Random().nextInt(portraits[0]-1);
+            case"Mammalian":random = new Random().nextInt(portraits[1]-1);
+            case"Reptilian":random = new Random().nextInt(portraits[2]-1);
+            case"Avian":random = new Random().nextInt(portraits[3]-1);
+            case"Arthropoid":random = new Random().nextInt(portraits[4]-1);
+            case"Molluscoid":random = new Random().nextInt(portraits[5]-1);
+            case"Fungoid":random = new Random().nextInt(portraits[6]-1);
+            case"Plantoid":random = new Random().nextInt(portraits[7]-1);
+            case"Synth":random = new Random().nextInt(portraits[8]-1);
+        }
+        String[] Portrait = {PortraitClass,String.valueOf(random)};
+        return Portrait;
     }
 }

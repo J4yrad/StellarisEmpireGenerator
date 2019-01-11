@@ -1,27 +1,65 @@
 package com.example.myfistapp;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-class HomeworldObject{
-    private String Type,Name,Star,SpecialSystem;
+class HomeworldObject implements Serializable {
+    @ColumnInfo(name = "homeworld_name")
+    private String Name;
+    @ColumnInfo(name = "type")
+    private String Type;
+    @ColumnInfo(name = "star")
+    private String Star;
+    @ColumnInfo(name = "special")
+    private String SpecialSystem;
+
     public String toString(){ return this.Name; }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public void setSpecialSystem(String specialSystem) {
+        SpecialSystem = specialSystem;
+    }
+
+    public void setStar(String star) {
+        Star = star;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
     public String getType(){ return this.Type;}
     public String getStar(){ return this.Star;}
     public String getSpecialSystem(){return  this.SpecialSystem;}
-    HomeworldObject(String type,String name, String star, String specialSystem){
-        this.Type = type;
-        this.Name = name;
-        this.Star = star;
-        this.SpecialSystem = specialSystem;
+    HomeworldObject(String Type,String Name, String Star, String SpecialSystem){
+        this.Type = Type;
+        this.Name = Name;
+        this.Star = Star;
+        this.SpecialSystem = SpecialSystem;
     }
 }
-class CivicModel{
+class CivicModel implements Serializable{
     @SerializedName("civics")
     private CivicObject[] civics;
     public CivicObject[] getCivics(){
@@ -64,7 +102,7 @@ class CivicModel{
 
     }
 }
-class TraitModel{
+class TraitModel implements Serializable{
     @SerializedName("traits")
     private TraitObject[] traits;
     public TraitObject[] getTraits(){
@@ -78,24 +116,13 @@ class TraitModel{
         @SerializedName("IncompatibleTraits")
         private String[] IncompatibleTraits;
 
-        private List<TraitObject> incompatibleTraits;
 
-        public void addIncompatibleTrait(TraitObject trait){
-            if (this.incompatibleTraits == null){
-                this.incompatibleTraits = new ArrayList<>();
-            }
-            this.incompatibleTraits.add(trait);
-        }
         public String[] showIncompatibleTraits(){
             return this.IncompatibleTraits;
         }
         public int getPointValue(){
             return this.pointValue;
         }
-        public List<TraitObject> getIncompatibleTraits(){
-            return this.incompatibleTraits;
-        }
-
         public boolean equals(TraitObject obj) {
             if (this.traitName.equals(obj.traitName)) return true;
             else return false;
@@ -109,16 +136,44 @@ class TraitModel{
         TraitObject(String name, int pointValue) {
             this.traitName = name;
             this.pointValue = pointValue;
-            this.incompatibleTraits = new ArrayList<>();
         }
     }
 }
-public class EmpireObject {
+@Entity(tableName = "empire_table")
+public class EmpireObject implements Serializable{
+    @NonNull
+    @PrimaryKey
+    @TypeConverters(IdConverter.class)
     private UUID Id;
-    private String Name,EmpireName,Biography,NameList,Cityset,AdvisorVoice,Shipset,Authority;
-    private String[] Ethics = new String[3];
+    @ColumnInfo(name = "name")
+    private String Name;
+    @ColumnInfo(name = "empire_name")
+    private String EmpireName;
+    @ColumnInfo(name = "biography")
+    private String Biography;
+    @ColumnInfo(name = "namelist")
+    private String NameList;
+    @ColumnInfo(name = "cityset")
+    private String Cityset;
+    @ColumnInfo(name = "advisorvoice")
+    private String AdvisorVoice;
+    @ColumnInfo(name = "shipset")
+    private String Shipset;
+    @ColumnInfo(name = "authority")
+    private String Authority;
+    @TypeConverters(EthicsConverter.class)
+    @ColumnInfo(name = "ethics")
+    private String[] Ethics;
+    @TypeConverters(PortraitConverter.class)
+    @ColumnInfo(name = "portrait")
+    private String[] Portrait;
+    @ColumnInfo(name = "traits")
+    @TypeConverters(TraitConverter.class)
     private TraitModel.TraitObject[] Traits;
+    @ColumnInfo(name = "civics")
+    @TypeConverters(CivicConverter.class)
     private CivicModel.CivicObject[] Civics;
+    @Embedded
     private HomeworldObject Homeworld;
 
 
@@ -135,7 +190,7 @@ public class EmpireObject {
         this.Ethics = ethics;
     }
     public void setEmpireAttributes(String Name, String EmpireName, String Biography, String NameList, String Cityset, String AdvisorVoice,
-                                    String Shipset, String[] Ethics, TraitModel.TraitObject[] Traits, String Authority, CivicModel.CivicObject[] Civics, HomeworldObject Homeworld){
+                                    String Shipset, String[] Ethics, TraitModel.TraitObject[] Traits, String Authority, CivicModel.CivicObject[] Civics, HomeworldObject Homeworld, String[] Portrait){
         this.Name = Name;
         this.EmpireName = EmpireName;
         this.Biography = Biography;
@@ -148,6 +203,7 @@ public class EmpireObject {
         this.Authority = Authority;
         this.Civics = Civics;
         this.Homeworld = Homeworld;
+        this.Portrait = Portrait;
     }
 
     public String[] getEmpireAttributes(){
@@ -183,16 +239,78 @@ public class EmpireObject {
     public String getAuthority(){
         return this.Authority;
     }
-
+    public String[] getPortrait() {return this.Portrait;}
+    public UUID getId(){
+        return this.Id;
+    }
+    public String getName(){
+        return this.Name;
+    }
+    public String getEmpireName(){
+        return this.EmpireName;
+    }
+    public String getBiography() {
+        return this.Biography;
+    }
+    public String getNameList(){
+        return this.NameList;
+    }
+    public String getCityset(){
+        return this.Cityset;
+    }
+    public  String getAdvisorVoice(){
+        return this.AdvisorVoice;
+    }
+    public String getShipset(){
+        return this.Shipset;
+    }
+    public HomeworldObject getHomeworld(){
+        return this.Homeworld;
+    }
+    public String[] getEthics(){
+        return this.Ethics;
+    }
+    public TraitModel.TraitObject[] getTraits(){
+        return this.Traits;
+    }
+    public CivicModel.CivicObject[] getCivics(){
+            return this.Civics;
+    }
+    public void setEmpireName(String name){
+        this.EmpireName = name;
+    }
+    public void setBiography(String bio){
+        this.Biography = bio;
+    }
+    public void setNameList(String namelist){
+        this.NameList = namelist;
+    }
+    public void setCityset(String city){
+        this.Cityset = getCityset();
+    }
+    public void setAdvisorVoice(String AdvisorVoice){
+        this.AdvisorVoice = AdvisorVoice;
+    }
+    public void setShipset(String ships){
+        this.Shipset = ships;
+    }
+    public void setHomeworld(HomeworldObject world){
+        this.Homeworld = world;
+    }
+    public void setId(UUID id){
+        this.Id = id;
+    }
+    public void setTraits(TraitModel.TraitObject[] traits){
+        this.Traits = traits;
+    }
+    public void setCivics(CivicModel.CivicObject[] civics){
+        this.Civics = civics;
+    }
+    public void setPortrait(String[] portrait){
+        this.Portrait = portrait;
+    }
 
     EmpireObject(){
-        this.Name = "TestName";
-        this.EmpireName = "My Empire";
-        this.Biography = "About My Civ";
-        this.NameList = "NameList";
-        this.Cityset = "My CitySet";
-        this.AdvisorVoice = "My Advisor";
-        this.Shipset = "My Shipset";
+        this.Id = UUID.randomUUID();
     }
 }
-

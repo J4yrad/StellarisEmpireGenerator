@@ -23,6 +23,7 @@
         android:layout_width="222dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
+        android:onClick="showAllEmpires"
         android:text="@string/button_view_saved"
         android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"

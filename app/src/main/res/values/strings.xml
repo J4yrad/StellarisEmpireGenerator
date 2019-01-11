@@ -78,6 +78,16 @@
         <item>Trinary 1</item>
         <item>Trinary 2</item>
     </string-array>
+    <string-array name="PortraitClasses">
+        <item>Humanoid</item>
+        <item>Mammalian</item>
+        <item>Reptilian</item>
+        <item>Avian</item>
+        <item>Arthropoid</item>
+        <item>Molluscoid</item>
+        <item>Fungoid</item>
+    </string-array>
+    <string name="title_activity_view_all_empires">ViewAllEmpires</string>
 
 
 </resources>
