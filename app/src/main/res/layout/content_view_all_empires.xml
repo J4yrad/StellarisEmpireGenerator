@@ -10,9 +10,8 @@
 
     <ImageView
         android:id="@+id/EmpirePortrait"
-        android:layout_width="66dp"
-        android:layout_height="62dp"
-        android:background="@mipmap/backgroundframe"
+        android:layout_width="74dp"
+        android:layout_height="94dp"
         tools:src="" />
 
     <TextView

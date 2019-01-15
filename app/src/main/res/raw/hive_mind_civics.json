@@ -1,0 +1,76 @@
+{
+  "civics": [
+    {
+      "civicName": "Ascetic",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Devouring Swarm",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Divided Attention",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Natural Neural Network",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "One Mind",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Pooled Knowledge",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Strength Of Legions",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Subspace Ephapse",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Subsumed Will",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    }
+  ]
+}

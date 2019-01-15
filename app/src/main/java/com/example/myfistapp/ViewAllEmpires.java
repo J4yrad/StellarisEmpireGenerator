@@ -24,7 +24,7 @@ public class ViewAllEmpires extends AppCompatActivity {
         EmpireViewModel mViewModel = ViewModelProviders.of(this).get(EmpireViewModel.class);
         RecyclerView rvEmpires = findViewById(R.id.rvContacts);
         List<EmpireObject> Empires = new ArrayList<>();
-        EmpiresAdapter adapter = new EmpiresAdapter(Empires);
+        EmpiresAdapter adapter = new EmpiresAdapter(Empires,mViewModel);
         // Attach the adapter to the recyclerview to populate items
         rvEmpires.setAdapter(adapter);
         // Set layout manager to position the items
@@ -32,7 +32,7 @@ public class ViewAllEmpires extends AppCompatActivity {
         mViewModel.getAllEmpires().observeForever(new Observer<List<EmpireObject>>() {
             @Override
             public void onChanged(@Nullable List<EmpireObject> empires) {
-                Empires.addAll(empires);
+                adapter.setEmpireList(empires);
                 adapter.notifyDataSetChanged();
             }
         });

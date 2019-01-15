@@ -2,6 +2,9 @@ package com.example.myfistapp;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,8 +39,11 @@ public class EmpiresAdapter extends RecyclerView.Adapter<EmpiresAdapter.ViewHold
         }
     }
     private List<EmpireObject> EmpireList;
-    public EmpiresAdapter(List<EmpireObject> empires) {
+    private EmpireViewModel EmpireModel;
+    public EmpiresAdapter(List<EmpireObject> empires, EmpireViewModel eModel) {
+
         EmpireList = empires;
+        EmpireModel = eModel;
     }
     @Override
     public EmpiresAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,16 +67,28 @@ public class EmpiresAdapter extends RecyclerView.Adapter<EmpiresAdapter.ViewHold
         // Set item views based on your views and data model
         TextView nameTextView = viewHolder.nameTextView;
         ImageView EmpirePortrait = viewHolder.EmpirePortrait;
+        Button DeleteButton = viewHolder.deleteButton;
         nameTextView.setText(listEmpire.getEmpireName());
+        BitmapDrawable d1 = new BitmapDrawable(viewHolder.itemView.getResources(),BitmapFactory.decodeResource(viewHolder.itemView.getResources(),R.mipmap.spacebackground));
+        BitmapDrawable d2 = null;
         try {
             Class res = R.mipmap.class;
             Field field = res.getField(listEmpire.getPortrait()[0].toLowerCase()+listEmpire.getPortrait()[1]);
-            EmpirePortrait.setImageBitmap(BitmapFactory.decodeResource(viewHolder.itemView.getResources(), field.getInt(null)));
+            d2 = new BitmapDrawable(viewHolder.itemView.getResources(),BitmapFactory.decodeResource(viewHolder.itemView.getResources(),field.getInt(null)));
         }
         catch (Exception e) {
             Log.e(listEmpire.getPortrait()[0].toLowerCase()+listEmpire.getPortrait()[1]+".png", "Failure to get drawable id.", e);
         }
-
+        BitmapDrawable d3 = new BitmapDrawable(viewHolder.itemView.getResources(),BitmapFactory.decodeResource(viewHolder.itemView.getResources(),R.mipmap.backgroundframe));
+        Drawable drawableArray[]= new Drawable[]{d1,d2,d3};
+        LayerDrawable layerDraw = new LayerDrawable(drawableArray);
+        EmpirePortrait.setImageDrawable(layerDraw);
+        DeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EmpireModel.removeEmpire(listEmpire);
+            }
+        });
     }
 
     // Returns the total count of items in the list

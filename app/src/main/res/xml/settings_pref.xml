@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_utopia"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: Utopia" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_apocalypse"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: Apocalypse" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_synthetic_dawn"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: Synthetic Dawn" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_megacorp"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: MegaCorp" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_humanoids"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: Humanoids" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:disableDependentsState="false"
+        android:key="has_plantoids"
+        android:summaryOn="Owned"
+        android:summaryOff="Unowned"
+        android:title="DLC: Plantiods" />
+</PreferenceScreen>

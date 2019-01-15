@@ -27,7 +27,7 @@ public class EmpireViewModel extends AndroidViewModel {
     public void findEmpire(String name) {
         repository.findEmpire(name);
     }
-    public List<EmpireObject> getAll(){
-        return repository.getAllEmpires();
+    public void removeEmpire(EmpireObject empire){
+        repository.remove(empire);
     }
 }

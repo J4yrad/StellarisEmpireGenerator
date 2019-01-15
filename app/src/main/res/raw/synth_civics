@@ -1,0 +1,116 @@
+{
+  "civics": [
+    {
+      "civicName": "Constructobot",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Delegated Functions",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Determined Exterminator",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Driven Assimilator","Rogue Servitor"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Driven Assimilator",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Determined Exterminator","Rogue Servitor"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Factory Overclocking",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Introspective",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "OTA Updates",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Rapid Replicator",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Rockbreakers",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Rogue Servitor",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":["Driven Assimilator","Determined Exterminator"],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Static Research Analysis",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Unitary Cohesion",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Warbots",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Zero Waste Protocols",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[""],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    }
+  ]
+}

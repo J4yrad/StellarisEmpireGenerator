@@ -17,6 +17,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+class NameModel implements Serializable{
+    @SerializedName("names")
+    private NameObject[] names;
+    public NameObject[] getNames(){return this.names;}
+    class NameObject{
+        @SerializedName("EmpireName")
+        String EmpireName;
+        @SerializedName("RequiredAuthority")
+        String[] RequiredAuthority;
+        @SerializedName("RequiredCivics")
+        String[] RequiredCivics;
+
+        public String[] getRequiredAuthority() {
+            return RequiredAuthority;
+        }
+
+        public String[] getRequiredCivics() {
+            return RequiredCivics;
+        }
+
+
+        public String toString() {
+            return this.EmpireName;
+        }
+    }
+}
+
 class HomeworldObject implements Serializable {
     @ColumnInfo(name = "homeworld_name")
     private String Name;
@@ -80,7 +107,6 @@ class CivicModel implements Serializable{
         private String RequiredEthics;
 
         public boolean equals(CivicObject civic){return this.civicName == civic.civicName;}
-        public boolean equals(String civic){return this.civicName.equals(civic);}
         public String toString(){
             return this.civicName;
         }

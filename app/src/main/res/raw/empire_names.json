@@ -1,0 +1,149 @@
+{
+  "names":[
+    {
+      "EmpireName": "HOMEWORLD_NAME Corporation",
+      "RequiredAuthority":["Corporate"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Inc.",
+      "RequiredAuthority":["Corporate"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "HOMEWORLD_NAME Syndicate",
+      "RequiredAuthority":["Corporate"],
+      "RequiredCivics":["Criminal Heritage"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Cartel",
+      "RequiredAuthority":["Corporate"],
+      "RequiredCivics":["Criminal Heritage"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Legitimate Businesses",
+      "RequiredAuthority":["Corporate"],
+      "RequiredCivics":["Criminal Heritage"]
+    },
+    {
+      "EmpireName": "Republic of HOMEWORLD_NAME",
+      "RequiredAuthority":["Democratic"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Republic of STAR_NAME",
+      "RequiredAuthority":["Democratic"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Interstellar Republic of HOMEWORLD_NAME",
+      "RequiredAuthority":["Democratic","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Empire of HOMEWORLD_NAME",
+      "RequiredAuthority":["Imperial","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Empire of STAR_NAME",
+      "RequiredAuthority":["Imperial","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Empire",
+      "RequiredAuthority":["Imperial","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "HOMEWORLD_NAME Star Empire",
+      "RequiredAuthority":["Imperial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "STAR_NAME Star Empire",
+      "RequiredAuthority":["Imperial","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Star Empire",
+      "RequiredAuthority":["Imperial","Dictatorial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "HOMEWORLD_NAME Kingdom",
+      "RequiredAuthority":["Imperial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Kingdom of SPECIES_NAME",
+      "RequiredAuthority":["Imperial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME State",
+      "RequiredAuthority":["Dictatorial","Oligarchic","Democratic","Imperial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Alliance",
+      "RequiredAuthority":["Oligarchic","Democratic"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Confederation",
+      "RequiredAuthority":["Oligarchic","Democratic"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "Confederation of STAR_NAME",
+      "RequiredAuthority":["Oligarchic","Democratic"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Hegemony",
+      "RequiredAuthority":["Imperial"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Hierarchy",
+      "RequiredAuthority":[],
+      "RequiredCivics":["Warrior Culture","Distinguished Admiralty"]
+    },
+    {
+      "EmpireName": "United Princes of HOMEWORLD_NAME",
+      "RequiredAuthority":["Imperial","Oligarchic"],
+      "RequiredCivics":["Feudal Society","Aristocratic Elite"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Survivors",
+      "RequiredAuthority":[],
+      "RequiredCivics":["Post Apocalyptic"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Swarm",
+      "RequiredAuthority":["Hive Mind"],
+      "RequiredCivics":["Devouring Swarm"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Devourers",
+      "RequiredAuthority":["Hive Mind"],
+      "RequiredCivics":["Devouring Swarm"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Consciousness",
+      "RequiredAuthority":["Hive Mind"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Collective",
+      "RequiredAuthority":["Hive Mind","Machine Intelligence"],
+      "RequiredCivics":[]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Exterminators",
+      "RequiredAuthority":[],
+      "RequiredCivics":["Fanatic Purifier"]
+    }
+  ]
+}

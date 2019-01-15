@@ -1,0 +1,100 @@
+{
+  "civics": [
+    {
+      "civicName": "Brand Loyalty",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Criminal Heritage",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Franchising",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Free Traders",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Gospel of the Masses",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Spiritualist1||Spiritualist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Indentured Assets",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Authoritarian1||Authoritarian2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Media Conglomerate",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Naval Contractors",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Private Military Companies",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"Militarist1||Militarist2",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Private Prospectors",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Ruthless Competition",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    },
+    {
+      "civicName": "Trading Posts",
+      "IncompatibleAuthority":[],
+      "RequiredAuthority":[],
+      "IncompatibleCivics":[],
+      "RequiredEthics":"",
+      "IncompatibleEthics":[]
+    }
+  ]
+}

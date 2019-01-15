@@ -83,7 +83,7 @@
             android:id="@+id/Authority"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Authority"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trait5" />
+            app:layout_constraintTop_toBottomOf="@+id/HomeworldType" />
 
         <TextView
             android:id="@+id/Civic1"
@@ -266,10 +266,10 @@
 
         <ImageView
             android:id="@+id/portrait"
-            android:layout_width="112dp"
-            android:layout_height="143dp"
+            android:layout_width="127dp"
+            android:layout_height="175dp"
             android:layout_marginTop="16dp"
-            android:background="@mipmap/backgroundframe"
+            android:adjustViewBounds="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/EmpireName" />
@@ -313,13 +313,56 @@
             android:layout_width="56dp"
             android:layout_height="46dp"
             android:layout_marginStart="312dp"
-            android:layout_marginTop="624dp"
+            android:layout_marginTop="692dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="save"
             android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.958" />
+
+        <ImageView
+            android:id="@+id/PlanetIcon"
+            android:layout_width="65dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/HW" />
+
+        <TextView
+            android:id="@+id/HW"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:text="Homeworld:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trait5Icon" />
+
+        <TextView
+            android:id="@+id/HomeworldName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Homeworld Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PlanetIcon" />
+
+        <TextView
+            android:id="@+id/HomeworldType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Homeworld Type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HomeworldName" />
 
 
     </android.support.constraint.ConstraintLayout>

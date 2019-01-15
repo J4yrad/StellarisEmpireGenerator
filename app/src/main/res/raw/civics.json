@@ -49,7 +49,7 @@
       "IncompatibleEthics":[]
     },
     {
-      "civicName": "Distinguished Admiralty ",
+      "civicName": "Distinguished Admiralty",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
       "IncompatibleCivics":[],
@@ -196,7 +196,7 @@
       "civicName": "Technocracy",
       "IncompatibleAuthority":[],
       "RequiredAuthority":[],
-      "IncompatibleCivics":[],
+      "IncompatibleCivics":["Aristocratic Elite","Merchant Guilds","Byzantine Bureaucracy","Exalted Priesthood"],
       "RequiredEthics":"Materialist1||Materialist2",
       "IncompatibleEthics":[]
     },

@@ -20,6 +20,8 @@ public interface EmpireDao {
     void insertEmpire(EmpireObject empire);
     @Query("SELECT * FROM empire_table WHERE empire_name = :name")
     List<EmpireObject> findEmpire(String name);
+    @Query("DELETE FROM empire_table WHERE id = :id")
+    void deleteEmpire(String id);
 
 }
 

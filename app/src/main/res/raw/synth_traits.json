@@ -1,0 +1,89 @@
+{
+  "traits": [
+    {
+      "traitName": "Double Jointed",
+      "pointValue": -1,
+      "IncompatibleTraits":["Bulky"]
+    },
+    {
+      "traitName": "Durable",
+      "pointValue": -1,
+      "IncompatibleTraits":["High Maintenance"]
+    },
+    {
+      "traitName": "Efficient Processors",
+      "pointValue": -3,
+      "IncompatibleTraits":[""]
+    },
+    {
+      "traitName": "Emotion Emulators",
+      "pointValue": -1,
+      "IncompatibleTraits":["Uncanny"]
+    },
+    {
+      "traitName": "Enhanced Memory",
+      "pointValue": -2,
+      "IncompatibleTraits":[""]
+    },
+    {
+      "traitName": "Learning Algorithms",
+      "pointValue": -1,
+      "IncompatibleTraits":["Repurposed Hardware"]
+    },
+    {
+      "traitName": "Logic Engines",
+      "pointValue": -2,
+      "IncompatibleTraits":[""]
+    },
+    {
+      "traitName": "Mass Produced",
+      "pointValue": -1,
+      "IncompatibleTraits":["Custom Made"]
+    },
+    {
+      "traitName": "Power Drills",
+      "pointValue": -2,
+      "IncompatibleTraits":[""]
+    },
+    {
+      "traitName": "Recycled",
+      "pointValue": -2,
+      "IncompatibleTraits":["Luxurious"]
+    },
+    {
+      "traitName": "Superconductive",
+      "pointValue": -2,
+      "IncompatibleTraits":[""]
+    },
+    {
+      "traitName": "Bulky",
+      "pointValue": 1,
+      "IncompatibleTraits":["Double Jointed"]
+    },
+    {
+      "traitName": "Custom Made",
+      "pointValue": 1,
+      "IncompatibleTraits":["Mass Produced"]
+    },
+    {
+      "traitName": "High Maintenance",
+      "pointValue": 1,
+      "IncompatibleTraits":["Durable"]
+    },
+    {
+      "traitName": "Luxurious",
+      "pointValue": 2,
+      "IncompatibleTraits":["Recycled"]
+    },
+    {
+      "traitName": "Repurposed Hardware",
+      "pointValue": 1,
+      "IncompatibleTraits":["Learning Algorithms"]
+    },
+    {
+      "traitName": "Uncanny",
+      "pointValue": 1,
+      "IncompatibleTraits":["Emotion Emulators"]
+    }
+  ]
+}

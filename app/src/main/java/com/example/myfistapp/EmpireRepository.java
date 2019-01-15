@@ -58,12 +58,31 @@ public class EmpireRepository implements AsyncResult{
                 asyncTaskDao.insertEmpire(params[0]);
                 return null;
             }
+
+        }
+        private static class removeAsyncTask extends AsyncTask<EmpireObject, Void, Void> {
+
+            private EmpireDao asyncTaskDao;
+
+            removeAsyncTask(EmpireDao dao) {
+                asyncTaskDao = dao;
+            }
+
+            @Override
+            protected Void doInBackground(final EmpireObject... params) {
+                asyncTaskDao.deleteEmpire(params[0].getId().toString());
+                return null;
+            }
+
         }
 
     }
 
     public void insert(EmpireObject newEmpire) {
         new queryAsyncTask.insertAsyncTask(empireDao).execute(newEmpire);
+    }
+    public void remove(EmpireObject rmEmpire){
+        new queryAsyncTask.removeAsyncTask(empireDao).execute(rmEmpire);
     }
     public LiveData<List<EmpireObject>> getEmpires() {
         return allEmpires;

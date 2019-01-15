@@ -2,11 +2,18 @@ package com.example.myfistapp;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,12 +34,26 @@ import com.google.gson.Gson;
 import org.apache.commons.jexl3.*;
 
 public class DisplayCreatedEmpire extends AppCompatActivity {
-
+    boolean has_utopia = false;
+    boolean has_synthetic_dawn = false;
+    boolean has_humanoids = false;
+    boolean has_apocalypse = false;
+    boolean has_plantoids = false;
+    boolean has_megacorp = false;
+    boolean HiveMind = false;
+    boolean MachineEmpire = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_created_empire);
-
+        Context context = getApplicationContext();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        has_utopia = sharedPref.getBoolean("has_utopia",false);
+        has_synthetic_dawn = sharedPref.getBoolean("has_synthetic_dawn",false);
+        has_humanoids = sharedPref.getBoolean("has_humanoids",false);
+        has_apocalypse = sharedPref.getBoolean("has_apocalypse",false);
+        has_plantoids = sharedPref.getBoolean("has_plantoids",false);
+        has_megacorp = sharedPref.getBoolean("has_megacorp",false);
         EmpireViewModel mViewModel = ViewModelProviders.of(this).get(EmpireViewModel.class);
 
         TextView EmpireName = findViewById(R.id.EmpireName);
@@ -48,6 +69,8 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         TextView Authority = findViewById(R.id.Authority);
         TextView Civic1 = findViewById(R.id.Civic1);
         TextView Civic2 = findViewById(R.id.Civic2);
+        TextView HomeworldType = findViewById(R.id.HomeworldType);
+        TextView HomeworldName = findViewById(R.id.HomeworldName);
         ImageView AuthImage = findViewById(R.id.authImg);
         ImageView Trait1Icon = findViewById(R.id.trait1Icon);
         ImageView Trait2Icon = findViewById(R.id.trait2Icon);
@@ -60,15 +83,17 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         ImageView Ethic1Icon = findViewById(R.id.EthicIcon1);
         ImageView Ethic2Icon = findViewById(R.id.EthicIcon2);
         ImageView Ethic3Icon = findViewById(R.id.EthicIcon3);
+        ImageView PlanetIcon = findViewById(R.id.PlanetIcon);
         Button SaveButton = findViewById(R.id.saveButton);
         EmpireObject newEmpire = new EmpireObject();
         generateRandomEmpire(newEmpire);
         String[] EmpireAttributes = newEmpire.getEmpireAttributes();
         EmpireName.setText(newEmpire.toString());
         Name.setText(EmpireAttributes[0]);
-        Cityset.setText(EmpireAttributes[3]);
-        Shipset.setText(EmpireAttributes[5]);
+        Cityset.setText("Cityset: "+EmpireAttributes[3]);
+        Shipset.setText("Shipset: "+EmpireAttributes[5]);
         Ethics.setText(createMultiLineText(newEmpire.getEmpireEthics()));
+        if(newEmpire.getEmpireEthics()[1] != null && newEmpire.getEmpireEthics()[0] == null)Ethics.setText(newEmpire.getEmpireEthics()[1]);
         String[] newTraits = newEmpire.getEmpireTraits();
         Trait1.setText(newTraits[0]);
         Trait2.setText(newTraits[1]);
@@ -79,6 +104,9 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String[] newCivics = newEmpire.getEmpireCivics();
         Civic1.setText(newCivics[0]);
         Civic2.setText(newCivics[1]);
+        HomeworldObject Homeworld = newEmpire.getHomeworld();
+        HomeworldType.setText(Homeworld.getType()+" World");
+        HomeworldName.setText(Homeworld.getName());
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,11 +115,11 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         });
         try {
             Class res = R.mipmap.class;
-            Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase());
+            Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase().replaceAll(" ","_"));
             AuthImage.setImageBitmap(BitmapFactory.decodeResource(getResources(),field.getInt(null)));
         }
         catch (Exception e) {
-            Log.e("auth_"+newEmpire.getAuthority().toLowerCase()+".png", "Failure to get drawable id.", e);
+            Log.e("auth_"+newEmpire.getAuthority().toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
         }
         try {
             Class res = R.mipmap.class;
@@ -160,17 +188,11 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             Log.e("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
         }
         try {
-            Class res = R.mipmap.class;
-            Field field = res.getField(newEmpire.getPortrait()[0].toLowerCase()+newEmpire.getPortrait()[1]);
-            Portrait.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-        }
-        catch (Exception e) {
-            Log.e(newEmpire.getPortrait()[0].toLowerCase()+newEmpire.getPortrait()[1]+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            Field field = res.getField("ethic_"+newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ","_"));
-            Ethic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            if(newEmpire.getEmpireEthics()[0] != null) {
+                Class res = R.mipmap.class;
+                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ", "_"));
+                Ethic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+            }
         }
         catch (Exception e) {
             Log.e("ethic_"+newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
@@ -195,14 +217,22 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         catch (Exception e) {
             Log.e("ethic_"+newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
         }
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField("planet_" + newEmpire.getHomeworld().getType().toLowerCase());
+            PlanetIcon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e("planet_" + newEmpire.getHomeworld().getType().toLowerCase()+".png", "Failure to get drawable id.", e);
+        }
+        Portrait.setImageDrawable(createPortrait(newEmpire.getPortrait()[0]+newEmpire.getPortrait()[1]));
     }
 
     public void generateRandomEmpire(EmpireObject newEmpire){
         String [] choiceArray;
+        String[] randomEthics = generateEthics();
         choiceArray = getResources().getStringArray(R.array.Names);
         String randomName = choiceArray[new Random().nextInt(choiceArray.length)];
-        choiceArray = getResources().getStringArray(R.array.EmpireNames);
-        String randomEmpireName = choiceArray[new Random().nextInt(choiceArray.length)];
         choiceArray = getResources().getStringArray(R.array.Biographies);
         String randomBio = choiceArray[new Random().nextInt(choiceArray.length)];
         choiceArray = getResources().getStringArray(R.array.NameLists);
@@ -212,11 +242,12 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         choiceArray = getResources().getStringArray(R.array.AdvisorVoices);        String randomAdvisorVoice = choiceArray[new Random().nextInt(choiceArray.length)];
         choiceArray = getResources().getStringArray(R.array.Shipsets);
         String randomShipset = choiceArray[new Random().nextInt(choiceArray.length)];
-        String[] randomEthics = generateEthics();
         TraitModel.TraitObject[] randomTraits = generateTraits();
         String randomAuthority = generateAuthority(randomEthics);
         CivicModel.CivicObject[] randomCivics = generateCivics(randomAuthority,randomEthics);
         HomeworldObject randomHomeworld = generateHomeworld(randomCivics);
+        String randomEmpireName = generateEmpireName(randomAuthority,randomCivics,randomName,randomHomeworld.getStar(),randomHomeworld.getName());
+
         String[] randomPortrait = generatePortrait();
         newEmpire.setEmpireAttributes(randomName,randomEmpireName,randomBio,randomNameList,randomCityset,randomAdvisorVoice,randomShipset,
                 randomEthics,randomTraits,randomAuthority,randomCivics, randomHomeworld, randomPortrait);
@@ -236,6 +267,18 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         int place = 0;
         int points = 3;
         boolean[] taken = new boolean[4];
+        if(has_utopia || has_synthetic_dawn){
+            int random = new Random().nextInt(100);
+            if(random < 14){
+                Ethics[1] = "Gestalt Consciousness";
+                random = new Random().nextInt(1);
+                if (random == 1 && has_synthetic_dawn) MachineEmpire = true;
+                else if (random == 1 && !has_synthetic_dawn) HiveMind = true;
+                else if (random == 0 && !has_utopia) MachineEmpire = true;
+                else HiveMind = true;
+                return Ethics;
+            }
+        }
         while(points > 0){
             int chosenEthos = new Random().nextInt(4);
             if(chosenEthos == 0 && !taken[0]){
@@ -334,18 +377,24 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         TraitModel.TraitObject[] chosenTraits = new TraitModel.TraitObject[5];
         int place =0;
         int points = 2;
+        String[] HiveMindIncomaptibleTraits = {"Conformists","Conservationist","Deviants","Wasteful"};
         TraitModel traitModel;
-        String myJson=inputStreamToString(this.getResources().openRawResource(R.raw.traits));
+        String myJson;
+        if(MachineEmpire){
+            myJson=inputStreamToString(this.getResources().openRawResource(R.raw.synth_traits));
+        }
+        else  myJson=inputStreamToString(this.getResources().openRawResource(R.raw.traits));
         Gson gson = new Gson();
         traitModel = gson.fromJson(myJson,TraitModel.class);
         List<TraitModel.TraitObject> availableTraits = new ArrayList<>(Arrays.asList(traitModel.getTraits()));
+        if(HiveMind) removeIncompatibleTraits(availableTraits,HiveMindIncomaptibleTraits);
         int i = 0;
         while(i<5){
             int random = new Random().nextInt(availableTraits.size());
             if (availableTraits.get(random).getPointValue() + points >= 0){
                 TraitModel.TraitObject trait = availableTraits.get(random);
                 chosenTraits[i] = trait;
-                removeIncompatibleTraits(availableTraits,trait);
+                removeIncompatibleTraits(availableTraits,trait.showIncompatibleTraits());
                 points += trait.getPointValue();
                 availableTraits.remove(trait);
             }
@@ -360,11 +409,11 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         return chosenTraits;
 
     }
-    public void removeIncompatibleTraits(List<TraitModel.TraitObject> availibleTraits, TraitModel.TraitObject trait){
-       List<String>incompatibleTraits = Arrays.asList(trait.showIncompatibleTraits());
-       for(int i=0;i<availibleTraits.size();i++){
-           if (incompatibleTraits.contains(availibleTraits.get(i))) availibleTraits.remove(availibleTraits.get(i));
-       }
+    public void removeIncompatibleTraits(List<TraitModel.TraitObject> availibleTraits, String[] incTraits){
+        List<String>incompatibleTraits = Arrays.asList(incTraits);
+        for(int i=0;i<availibleTraits.size();i++){
+            if (incompatibleTraits.contains(availibleTraits.get(i).toString())) availibleTraits.remove(availibleTraits.get(i));
+        }
 
     }
 
@@ -379,6 +428,8 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         }
     }
     public String generateAuthority(String[] ethics){
+        if(MachineEmpire) return "Machine Intelligence";
+        else if(HiveMind) return "Hive Mind";
         List<String> Ethics = Arrays.asList(ethics);
         ArrayList<String> Authorities = new ArrayList<String>(Arrays.asList("Democratic", "Oligarchic", "Dictatorial","Imperial"));
         if(Ethics.contains("Authoritarian")||Ethics.contains("Fanatic Authoritarian")){
@@ -392,17 +443,28 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             Authorities.remove("Imperial");
             Authorities.remove("Dictatorial");
         }
+        if(has_megacorp && !Ethics.contains("Fanatic Authoritarian") && !Ethics.contains("Fanatic Egalitarian")) Authorities.add("Corporate");
         int random = new Random().nextInt(Authorities.size());
         return Authorities.get(random);
     }
     public CivicModel.CivicObject[] generateCivics(String authority, String[] ethics){
         CivicModel.CivicObject[] chosenCivics =  new CivicModel.CivicObject[2];
         CivicModel civicModel;
+        String[] utopiaCivics = {"Fanatic Purifiers","Mechanist","Syncretic Evolution"};
+        String[] apocCivics = {"Life Seeded","Post Apocalyptic","Barbaric Despoilers"};
+        String[] megacorpCivics={"Byzantine Bureaucracy","Merchant Guilds","Shared Burdens"};
+        String myJson;
         List<String>Ethics = Arrays.asList(ethics);
-        String myJson=inputStreamToString(this.getResources().openRawResource(R.raw.civics));
+        if(MachineEmpire) myJson = inputStreamToString(this.getResources().openRawResource(R.raw.synth_civics));
+        else if(HiveMind) myJson = inputStreamToString(this.getResources().openRawResource(R.raw.hive_mind_civics));
+        else if(authority == "Corporate") myJson = inputStreamToString(this.getResources().openRawResource(R.raw.corporate_civics));
+        else myJson=inputStreamToString(this.getResources().openRawResource(R.raw.civics));
         Gson gson = new Gson();
         civicModel = gson.fromJson(myJson,CivicModel.class);
         List<CivicModel.CivicObject> availableCivics = new ArrayList<>(Arrays.asList(civicModel.getCivics()));
+        if(!has_utopia&&!MachineEmpire&&!(authority=="Corporate"))removeIncompatibleCivics(availableCivics,utopiaCivics);
+        if(!has_apocalypse&&!MachineEmpire&&!HiveMind&&!(authority=="Corporate"))removeIncompatibleCivics(availableCivics,apocCivics);
+        if(!has_megacorp&&!MachineEmpire&&!HiveMind)removeIncompatibleCivics(availableCivics,megacorpCivics);
         for(int i= 0; i<availableCivics.size();i++ ){
             CivicModel.CivicObject civic = availableCivics.get(i);
             List<String>RequiredAuthority = new ArrayList<>(Arrays.asList(civic.getRequiredAuthority()));
@@ -445,6 +507,16 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         for(int i =0; i<availableCivics.size();i++){
             if(IncompatibleCivics.contains(availableCivics.get(i).toString())){
                 availableCivics.remove(i);
+                i--;
+            }
+        }
+    }
+    public void removeIncompatibleCivics(List<CivicModel.CivicObject> availableCivics, String[] incCivics){
+        List<String> IncompatibleCivics = new ArrayList<>(Arrays.asList(incCivics));
+        for(int i =0; i<availableCivics.size();i++){
+            if(IncompatibleCivics.contains(availableCivics.get(i).toString())){
+                availableCivics.remove(i);
+                i--;
             }
         }
     }
@@ -471,21 +543,24 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String[] StarNames = getResources().getStringArray(R.array.StarNames);
         String[] Systems = getResources().getStringArray(R.array.SpecialSystems);
         String[] PlanetNames = getResources().getStringArray(R.array.PlanetNames);
-        String HomeworldType = PlanetTypes[new Random().nextInt(PlanetTypes.length)]+" World";
+        String HomeworldType = PlanetTypes[new Random().nextInt(PlanetTypes.length)];
         String PlanetName = PlanetNames[new Random().nextInt(PlanetNames.length)];
         String StarName =  StarNames[new Random().nextInt(StarNames.length)];
         String SystemType = Systems[new Random().nextInt(Systems.length)];
         for(CivicModel.CivicObject civic: civics){
-            if(civic.equals("Life Seeded")) HomeworldType = "Gaia World";
-            else if(civic.equals("Post-Apocalyptic")) HomeworldType = "Tomb World";
+            if(civic.toString().equals("Life Seeded")) HomeworldType = "Gaia";
+            else if(civic.toString().equals("Post Apocalyptic")||civic.toString().equals("Determined Exterminator")) HomeworldType = "Tomb";
         }
         return new HomeworldObject(HomeworldType,PlanetName,StarName,SystemType);
     }
     public String[] generatePortrait(){
         List <String> PortraitClasses = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.PortraitClasses)));
+        if(has_plantoids) PortraitClasses.add("Plantoid");
         int random = new Random().nextInt(PortraitClasses.size()-1);
         String PortraitClass = PortraitClasses.get(random);
+        if(MachineEmpire) PortraitClass = "Synth";
         int[] portraits = {5,18,17,18,18,16,16,15,9};//Number of portraits in each species group{Humanoid,Mammalian,Reptilian,Avian,Arthropoid,Molluscoid,Fungoid,Plantoid,Synth}
+        if(has_humanoids) portraits[0] = 15;
         switch(PortraitClass){
             case"Humanoid":random = new Random().nextInt(portraits[0]-1);
             case"Mammalian":random = new Random().nextInt(portraits[1]-1);
@@ -499,5 +574,40 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         }
         String[] Portrait = {PortraitClass,String.valueOf(random)};
         return Portrait;
+    }
+    public LayerDrawable createPortrait(String portrait){
+        BitmapDrawable d1 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),R.mipmap.spacebackground));
+        BitmapDrawable d2 = null;
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField(portrait.toLowerCase());
+            d2 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),field.getInt(null)));
+        }
+        catch (Exception e) {
+            Log.e(portrait.toLowerCase()+".png", "Failure to get drawable id.", e);
+        }
+        BitmapDrawable d3 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),R.mipmap.backgroundframe));
+        Drawable drawableArray[]= new Drawable[]{d1,d2,d3};
+        LayerDrawable layerDraw = new LayerDrawable(drawableArray);
+        return layerDraw;
+    }
+    public String generateEmpireName(String authority, CivicModel.CivicObject[] civics,String SpeciesName, String StarName, String HomeworldName){
+        Gson gson = new Gson();
+        String myJson = inputStreamToString(getResources().openRawResource(R.raw.empire_names));
+        List<NameModel.NameObject> availibleNames = new ArrayList<>(Arrays.asList(gson.fromJson(myJson,NameModel.class).getNames()));
+        for(int i =0; i<availibleNames.size();i++){
+            if(!Arrays.asList(availibleNames.get(i).getRequiredAuthority()).contains(authority) && availibleNames.get(i).getRequiredAuthority().length>0){
+                availibleNames.remove(i);
+                i--;
+            }
+            else if(availibleNames.get(i).RequiredCivics.length > 0&&(!Arrays.asList(availibleNames.get(i).RequiredCivics).contains(civics[0].toString()))&&(!Arrays.asList(availibleNames.get(i).RequiredCivics).contains(civics[1].toString()))){
+                availibleNames.remove(i);
+                i--;
+            }
+        }
+        int random = new Random().nextInt(availibleNames.size());
+        String EmpireName = availibleNames.get(random).toString().replace("STAR_NAME",StarName).replace("SPECIES_NAME",SpeciesName).replace("HOMEWORLD_NAME",HomeworldName);
+        return EmpireName;
+
     }
 }

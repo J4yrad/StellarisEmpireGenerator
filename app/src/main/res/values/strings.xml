@@ -3,14 +3,32 @@
     <string name="button_create_new">Generate A New Empire</string>
     <string name="button_view_saved">View Created Empires</string>
     <string-array name="Names">
-        <item>Name1</item>
-        <item>Name2</item>
-        <item>Name3</item>
-    </string-array>
-    <string-array name="EmpireNames">
-        <item>EmpireName1</item>
-        <item>EmpireName2</item>
-        <item>EmpireName3</item>
+        <item>Othari</item>
+        <item>Zik Mok</item>
+        <item>Evandari</item>
+        <item>Bothari</item>
+        <item>Quirimulan</item>
+        <item>Qell Nadar</item>
+        <item>Valdari</item>
+        <item>Kaan Visam</item>
+        <item>Tycan</item>
+        <item>Tyrain</item>
+        <item>"Ala'rai"</item>
+        <item>Slydian</item>
+        <item>Macu</item>
+        <item>Zar Kay</item>
+        <item>Xel-tek</item>
+        <item>Rontor</item>
+        <item>Uthonian</item>
+        <item>"Sha'da"</item>
+        <item>Calaan</item>
+        <item>Entheri</item>
+        <item>Avtyraan</item>
+        <item>Xavrak</item>
+        <item>Xiran</item>
+        <item>Hidari</item>
+        <item>Vissari</item>
+
     </string-array>
     <string-array name="Biographies">
         <item>Bio1</item>
@@ -23,9 +41,12 @@
         <item>NameList3</item>
     </string-array>
     <string-array name="CitySet">
-        <item>CitySet1</item>
-        <item>CitySet2</item>
-        <item>CitySet3</item>
+        <item>Mammalian</item>
+        <item>Reptilian</item>
+        <item>Avian</item>
+        <item>Molluscoid</item>
+        <item>Arthropoid</item>
+        <item>Fungoid</item>
     </string-array>
     <string-array name="AdvisorVoices">
         <item>Advisor1</item>
@@ -33,42 +54,73 @@
         <item>Advisor3</item>
     </string-array>
     <string-array name="Shipsets">
-        <item>Shipset1</item>
-        <item>Shipset2</item>
-        <item>Shipset3</item>
+        <item>Mammalian</item>
+        <item>Reptilian</item>
+        <item>Avian</item>
+        <item>Molluscoid</item>
+        <item>Arthropoid</item>
+        <item>Fungoid</item>
     </string-array>
     <string-array name="HomeworldTypes">
         <item>Arid</item>
         <item>Desert</item>
         <item>Savanna</item>
         <item>Alpine</item>
-        <item>Artic</item>
+        <item>Arctic</item>
         <item>Tundra</item>
         <item>Tropical</item>
         <item>Continental</item>
         <item>Ocean</item>
     </string-array>
     <string-array name="PlanetNames">
-        <item>Planet 1</item>
-        <item>Planet 2</item>
-        <item>Planet 3</item>
-        <item>Planet 4</item>
-        <item>Planet 5</item>
-        <item>Planet 6</item>
-        <item>Planet 7</item>
-        <item>Planet 8</item>
-        <item>Planet 9</item>
+        <item>Ithoria</item>
+        <item>Viamr</item>
+        <item>Drell</item>
+        <item>Nutania</item>
+        <item>Zanvov</item>
+        <item>Gemalia</item>
+        <item>Tektov</item>
+        <item>Atrenus</item>
+        <item>Cilreon</item>
+        <item>Novigrad</item>
+        <item>Vaenia</item>
+        <item>Nephus</item>
+        <item>Geth</item>
+        <item>Carnoch</item>
+        <item>Biostea</item>
+        <item>Maelia</item>
+        <item>Ollore</item>
+        <item>Thostea</item>
+        <item>Crocothea</item>
+        <item>Zocunius</item>
+        <item>Vorkuta</item>
+        <item>Cuelia</item>
+        <item>Nolrania</item>
+        <item>Caliea</item>
+        <item>Alonoe</item>
+        <item>Nar Shadda</item>
     </string-array>
     <string-array name="StarNames">
-        <item>Star 1</item>
-        <item>Star 2</item>
-        <item>Star 3</item>
-        <item>Star 4</item>
-        <item>Star 5</item>
-        <item>Star 6</item>
-        <item>Star 7</item>
-        <item>Star 8</item>
-        <item>Star 9</item>
+        <item>Malachor</item>
+        <item>Vorshun</item>
+        <item>Forlorn</item>
+        <item>Sol Invictus</item>
+        <item>Valeor</item>
+        <item>Elyon</item>
+        <item>Kiram</item>
+        <item>Spiram</item>
+        <item>Landeen</item>
+        <item>Stratal</item>
+        <item>Mishu</item>
+        <item>Pyla</item>
+        <item>Raxum</item>
+        <item>Raxus</item>
+        <item>Nar Valen</item>
+        <item>Unitar</item>
+        <item>Markar</item>
+        <item>Argon</item>
+
+
     </string-array>
     <string-array name="SpecialSystems">
         <item>Unary 1</item>
@@ -88,6 +140,80 @@
         <item>Fungoid</item>
     </string-array>
     <string name="title_activity_view_all_empires">ViewAllEmpires</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="pref_size_key" translatable="false">size</string>
 
 
 </resources>
