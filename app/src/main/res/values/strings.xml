@@ -214,6 +214,7 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_size_key" translatable="false">size</string>
+    <string name="title_activity_show_empire">ShowEmpireActivity</string>
 
 
 </resources>

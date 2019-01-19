@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        Button GenerateButton = findViewById(R.id.generateButton);
+        Button ViewButton = findViewById(R.id.viewButton);
+        GenerateButton.setBackground(getDrawable(R.mipmap.view_button));
+        ViewButton.setBackground(getDrawable(R.mipmap.view_button));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

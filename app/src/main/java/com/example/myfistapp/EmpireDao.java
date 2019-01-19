@@ -14,6 +14,8 @@ public interface EmpireDao {
 
     @Query("SELECT * FROM empire_table")
     LiveData<List<EmpireObject>> getAll();
+    @Query("SELECT * FROM empire_table WHERE id = :id")
+    EmpireObject getEmpire(String id);
     @Query("SELECT * FROM empire_table")
     List<EmpireObject> getAllEmpires();
     @Insert

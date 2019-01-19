@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -16,8 +19,10 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -84,7 +89,8 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         ImageView Ethic2Icon = findViewById(R.id.EthicIcon2);
         ImageView Ethic3Icon = findViewById(R.id.EthicIcon3);
         ImageView PlanetIcon = findViewById(R.id.PlanetIcon);
-        Button SaveButton = findViewById(R.id.saveButton);
+        ImageView FlagView = findViewById(R.id.Flag);
+        ImageButton SaveButton = findViewById(R.id.saveButton);
         EmpireObject newEmpire = new EmpireObject();
         generateRandomEmpire(newEmpire);
         String[] EmpireAttributes = newEmpire.getEmpireAttributes();
@@ -110,7 +116,11 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mViewModel.insertEmpire(newEmpire);
+                CharSequence Savetext = "Empire Saved";
+                mViewModel.insertEmpire(newEmpire);
+                SaveButton.setClickable(false);
+                Toast SaveMsg = Toast.makeText(context,Savetext,Toast.LENGTH_SHORT);
+                SaveMsg.show();
             }
         });
         try {
@@ -226,6 +236,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             Log.e("planet_" + newEmpire.getHomeworld().getType().toLowerCase()+".png", "Failure to get drawable id.", e);
         }
         Portrait.setImageDrawable(createPortrait(newEmpire.getPortrait()[0]+newEmpire.getPortrait()[1]));
+        FlagView.setImageDrawable(generateFlag(newEmpire));
     }
 
     public void generateRandomEmpire(EmpireObject newEmpire){
@@ -556,7 +567,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
     public String[] generatePortrait(){
         List <String> PortraitClasses = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.PortraitClasses)));
         if(has_plantoids) PortraitClasses.add("Plantoid");
-        int random = new Random().nextInt(PortraitClasses.size()-1);
+        int random = new Random().nextInt(PortraitClasses.size());
         String PortraitClass = PortraitClasses.get(random);
         if(MachineEmpire) PortraitClass = "Synth";
         int[] portraits = {5,18,17,18,18,16,16,15,9};//Number of portraits in each species group{Humanoid,Mammalian,Reptilian,Avian,Arthropoid,Molluscoid,Fungoid,Plantoid,Synth}
@@ -609,5 +620,34 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String EmpireName = availibleNames.get(random).toString().replace("STAR_NAME",StarName).replace("SPECIES_NAME",SpeciesName).replace("HOMEWORLD_NAME",HomeworldName);
         return EmpireName;
 
+    }
+    public Drawable generateFlag(EmpireObject newEmpire){
+        int color1 = new Random().nextInt(20);
+        int color2 = new Random().nextInt(20);
+        String background = String.valueOf(new Random().nextInt(13));
+        String icon = String.valueOf(new Random().nextInt(24));
+        ColorFilter BackgroundMain = new PorterDuffColorFilter(getResources().getColor(getResources().getIdentifier("color_"+String.valueOf(color1), "color", getPackageName())),PorterDuff.Mode.MULTIPLY);
+        ColorFilter BackgroundSecondary = new PorterDuffColorFilter(getResources().getColor(getResources().getIdentifier("color_"+String.valueOf(color2), "color", getPackageName())),PorterDuff.Mode.MULTIPLY);
+        BitmapDrawable d1 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),R.mipmap.flag_background_main));
+        BitmapDrawable d2 = new BitmapDrawable(getResources(),getDrawable("flag_background_"+background));
+        BitmapDrawable d3 = new BitmapDrawable(getResources(),getDrawable("flag_icon_"+icon));
+        d1.setColorFilter(BackgroundMain);
+        d2.setColorFilter(BackgroundSecondary);
+        Drawable drawableArray[]= new Drawable[]{d1,d2,d3};
+        LayerDrawable layerDraw = new LayerDrawable(drawableArray);
+        String[] flagArray = {String.valueOf(color1),String.valueOf(color2),background,icon};
+        newEmpire.setFlag(flagArray);
+        return layerDraw;
+    }
+    public Bitmap getDrawable(String drawableName){
+        try {
+            Class res = R.mipmap.class;
+            Field field = res.getField(drawableName);
+            return BitmapFactory.decodeResource(getResources(),field.getInt(null));
+        }
+        catch (Exception e) {
+            Log.e(drawableName+".png", "Failure to get drawable id.", e);
+        }
+        return null;
     }
 }

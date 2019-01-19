@@ -192,7 +192,10 @@ public class EmpireObject implements Serializable{
     private String[] Ethics;
     @TypeConverters(PortraitConverter.class)
     @ColumnInfo(name = "portrait")
-    private String[] Portrait;
+    private String[] Portrait; //Flags are saved as an array of strings telling us which resources to use[Primary Color, Secondary Color, Background, Icon]
+    @ColumnInfo(name = "Flag")
+    @TypeConverters(FlagConverter.class)
+    private String[] Flag;
     @ColumnInfo(name = "traits")
     @TypeConverters(TraitConverter.class)
     private TraitModel.TraitObject[] Traits;
@@ -302,6 +305,11 @@ public class EmpireObject implements Serializable{
     public CivicModel.CivicObject[] getCivics(){
             return this.Civics;
     }
+
+    public String[] getFlag() {
+        return Flag;
+    }
+
     public void setEmpireName(String name){
         this.EmpireName = name;
     }
@@ -312,7 +320,7 @@ public class EmpireObject implements Serializable{
         this.NameList = namelist;
     }
     public void setCityset(String city){
-        this.Cityset = getCityset();
+        this.Cityset = city;
     }
     public void setAdvisorVoice(String AdvisorVoice){
         this.AdvisorVoice = AdvisorVoice;
@@ -335,6 +343,7 @@ public class EmpireObject implements Serializable{
     public void setPortrait(String[] portrait){
         this.Portrait = portrait;
     }
+    public void setFlag(String[] flag){this.Flag = flag;}
 
     EmpireObject(){
         this.Id = UUID.randomUUID();

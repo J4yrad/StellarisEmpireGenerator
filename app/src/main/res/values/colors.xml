@@ -5,4 +5,24 @@
     <color name="colorAccent">#009984</color>
     <color name="colorBackground">#af1f2b27</color>
     <color name="text_color_primary">#ffffff</color>
+    <color name="color_0">#291b10</color>
+    <color name="color_1">#523621</color>
+    <color name="color_2">#a05713</color>
+    <color name="color_3">#ae332c</color>
+    <color name="color_4">#55000a</color>
+    <color name="color_5">#480d1f</color>
+    <color name="color_6">#6b2957</color>
+    <color name="color_7">#532c85</color>
+    <color name="color_8">#321650</color>
+    <color name="color_9">#280f6a</color>
+    <color name="color_10">#0d1b5c</color>
+    <color name="color_11">#283a9e</color>
+    <color name="color_12">#307b76</color>
+    <color name="color_13">#2b6c4c</color>
+    <color name="color_14">#1c4645</color>
+    <color name="color_15">#245420</color>
+    <color name="color_16">#173617</color>
+    <color name="color_17">#434247</color>
+    <color name="color_18">#2a2a2c</color>
+    <color name="color_19">#0a0b0f</color>
 </resources>

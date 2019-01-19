@@ -30,4 +30,7 @@ public class EmpireViewModel extends AndroidViewModel {
     public void removeEmpire(EmpireObject empire){
         repository.remove(empire);
     }
+    public LiveData<EmpireObject> getEmpire(String id){
+        return repository.getEmpire(id);
+    }
 }

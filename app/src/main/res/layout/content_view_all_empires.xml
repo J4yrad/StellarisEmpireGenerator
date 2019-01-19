@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    tools:context=".ViewAllEmpires">
 
     <ImageView
         android:id="@+id/EmpirePortrait"
-        android:layout_width="74dp"
-        android:layout_height="94dp"
-        tools:src="" />
+        android:layout_width="100dp"
+        android:layout_height="117dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <ImageButton
+        android:id="@+id/EmpireDelete"
+        android:layout_width="47dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:src="@mipmap/trash_can"
+        app:layout_constraintEnd_toStartOf="@+id/EmpireFlag"
+        app:layout_constraintTop_toBottomOf="@+id/EmpireName" />
 
     <TextView
         android:id="@+id/EmpireName"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_weight="1"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/EmpireFlag"
+        app:layout_constraintStart_toEndOf="@+id/EmpirePortrait"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/EmpireFlag"
+        android:layout_width="100dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="184dp"
+        app:layout_constraintStart_toEndOf="@+id/EmpirePortrait"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[3]" />
 
     <Button
-        android:id="@+id/EmpireDelete"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_weight="0.1"
-        android:text="Delete"
-        android:textAppearance="@style/TextAppearance.AppCompat" />
-
-</LinearLayout>
+        android:id="@+id/viewButton"
+        android:layout_width="96dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@mipmap/view_button"
+        android:text="View"
+        android:foreground="@drawable/ripple"
+        app:layout_constraintEnd_toStartOf="@+id/EmpireDelete"
+        app:layout_constraintStart_toEndOf="@+id/EmpirePortrait"
+        app:layout_constraintTop_toBottomOf="@+id/EmpireName" />
+</android.support.constraint.ConstraintLayout>

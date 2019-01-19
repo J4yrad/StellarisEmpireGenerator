@@ -16,7 +16,7 @@ public class EmpireRepository implements AsyncResult{
     private EmpireDao empireDao;
     private LiveData<List<EmpireObject>> allEmpires;
     private List<EmpireObject> allEmpiresList;
-
+    private MutableLiveData<EmpireObject> RequestedEmpire = new MutableLiveData<>();
     public EmpireRepository(Application application) {
 
         EmpiresDatabase db;
@@ -77,6 +77,22 @@ public class EmpireRepository implements AsyncResult{
         }
 
     }
+    public void setQuereyResults(EmpireObject empire){
+        RequestedEmpire.setValue(empire);
+    }
+    private class retrieveAsnycTask extends AsyncTask<String, Void, EmpireObject>{
+        private EmpireDao asyncTaskDao;
+        retrieveAsnycTask(EmpireDao dao) {
+            asyncTaskDao = dao;
+        }
+        @Override
+        protected EmpireObject doInBackground(final String... params){
+            return asyncTaskDao.getEmpire(params[0]);
+        }
+        protected void onPostExecute(EmpireObject result){
+            setQuereyResults(result);
+        }
+    }
 
     public void insert(EmpireObject newEmpire) {
         new queryAsyncTask.insertAsyncTask(empireDao).execute(newEmpire);
@@ -94,5 +110,9 @@ public class EmpireRepository implements AsyncResult{
     }
     public List<EmpireObject> getAllEmpires(){
         return empireDao.getAllEmpires();
+    }
+    public LiveData<EmpireObject> getEmpire(String id){
+        new retrieveAsnycTask(empireDao).execute(id);
+        return RequestedEmpire;
     }
 }
