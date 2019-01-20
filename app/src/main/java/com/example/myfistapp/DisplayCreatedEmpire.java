@@ -3,6 +3,7 @@ package com.example.myfistapp;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -51,194 +53,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_created_empire);
-        Context context = getApplicationContext();
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        has_utopia = sharedPref.getBoolean("has_utopia",false);
-        has_synthetic_dawn = sharedPref.getBoolean("has_synthetic_dawn",false);
-        has_humanoids = sharedPref.getBoolean("has_humanoids",false);
-        has_apocalypse = sharedPref.getBoolean("has_apocalypse",false);
-        has_plantoids = sharedPref.getBoolean("has_plantoids",false);
-        has_megacorp = sharedPref.getBoolean("has_megacorp",false);
-        EmpireViewModel mViewModel = ViewModelProviders.of(this).get(EmpireViewModel.class);
-
-        TextView EmpireName = findViewById(R.id.EmpireName);
-        TextView Name = findViewById(R.id.Name);
-        TextView Cityset = findViewById(R.id.Cityset);
-        TextView Shipset = findViewById(R.id.Shipset);
-        TextView Ethics = findViewById(R.id.Ethics);
-        TextView Trait1 = findViewById(R.id.trait1);
-        TextView Trait2 = findViewById(R.id.trait2);
-        TextView Trait3 = findViewById(R.id.trait3);
-        TextView Trait4 = findViewById(R.id.trait4);
-        TextView Trait5 = findViewById(R.id.trait5);
-        TextView Authority = findViewById(R.id.Authority);
-        TextView Civic1 = findViewById(R.id.Civic1);
-        TextView Civic2 = findViewById(R.id.Civic2);
-        TextView HomeworldType = findViewById(R.id.HomeworldType);
-        TextView HomeworldName = findViewById(R.id.HomeworldName);
-        TextView HomeworldStar = findViewById(R.id.HomeworldStar);
-        ImageView AuthImage = findViewById(R.id.authImg);
-        ImageView Trait1Icon = findViewById(R.id.trait1Icon);
-        ImageView Trait2Icon = findViewById(R.id.trait2Icon);
-        ImageView Trait3Icon = findViewById(R.id.trait3Icon);
-        ImageView Trait4Icon = findViewById(R.id.trait4Icon);
-        ImageView Trait5Icon = findViewById(R.id.trait5Icon);
-        ImageView Civic1Icon = findViewById(R.id.civic1Icon);
-        ImageView Civic2Icon = findViewById(R.id.civic2Icon);
-        ImageView Portrait = findViewById(R.id.portrait);
-        ImageView Ethic1Icon = findViewById(R.id.EthicIcon1);
-        ImageView Ethic2Icon = findViewById(R.id.EthicIcon2);
-        ImageView Ethic3Icon = findViewById(R.id.EthicIcon3);
-        ImageView PlanetIcon = findViewById(R.id.PlanetIcon);
-        ImageView FlagView = findViewById(R.id.Flag);
-        ImageButton SaveButton = findViewById(R.id.saveButton);
-        EmpireObject newEmpire = new EmpireObject();
-        generateRandomEmpire(newEmpire);
-        String[] EmpireAttributes = newEmpire.getEmpireAttributes();
-        EmpireName.setText(newEmpire.toString());
-        Name.setText(EmpireAttributes[0]);
-        Cityset.setText("Cityset: "+EmpireAttributes[3]);
-        Shipset.setText("Shipset: "+EmpireAttributes[5]);
-        Ethics.setText(createMultiLineText(newEmpire.getEmpireEthics()));
-        if(newEmpire.getEmpireEthics()[1] != null && newEmpire.getEmpireEthics()[0] == null)Ethics.setText(newEmpire.getEmpireEthics()[1]);
-        String[] newTraits = newEmpire.getEmpireTraits();
-        Trait1.setText(newTraits[0]);
-        Trait2.setText(newTraits[1]);
-        Trait3.setText(newTraits[2]);
-        Trait4.setText(newTraits[3]);
-        Trait5.setText(newTraits[4]);
-        Authority.setText(newEmpire.getAuthority());
-        String[] newCivics = newEmpire.getEmpireCivics();
-        Civic1.setText(newCivics[0]);
-        Civic2.setText(newCivics[1]);
-        HomeworldObject Homeworld = newEmpire.getHomeworld();
-        HomeworldType.setText(Homeworld.getType()+" World");
-        HomeworldName.setText(Homeworld.getName());
-        HomeworldStar.append(newEmpire.getHomeworld().getStar());
-        SaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CharSequence Savetext = "Empire Saved";
-                mViewModel.insertEmpire(newEmpire);
-                SaveButton.setClickable(false);
-                Toast SaveMsg = Toast.makeText(context,Savetext,Toast.LENGTH_SHORT);
-                SaveMsg.show();
-            }
-        });
-        try {
-            Class res = R.mipmap.class;
-            Field field = res.getField("auth_"+newEmpire.getAuthority().toLowerCase().replaceAll(" ","_"));
-            AuthImage.setImageBitmap(BitmapFactory.decodeResource(getResources(),field.getInt(null)));
-        }
-        catch (Exception e) {
-            Log.e("auth_"+newEmpire.getAuthority().toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            if(newTraits[0] != null) {
-                Field field = res.getField("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_"));
-                Trait1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            if(newTraits[1] != null) {
-                Field field = res.getField("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_"));
-                Trait2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            if(newTraits[2] != null) {
-                Field field = res.getField("trait_" + newTraits[2].toLowerCase().replaceAll(" ","_"));
-                Trait3Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("trait_" + newTraits[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            if(newTraits[3] != null) {
-                Field field = res.getField("trait_" + newTraits[3].toLowerCase().replaceAll(" ","_"));
-                Trait4Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("trait_" + newTraits[3].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            if(newTraits[4] != null) {
-                Field field = res.getField("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_"));
-                Trait5Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-                Field field = res.getField("civic_" + newCivics[0].toLowerCase().replaceAll(" ","_"));
-                Civic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-        }
-        catch (Exception e) {
-            Log.e("civic_" + newCivics[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            Field field = res.getField("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_"));
-            Civic2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-        }
-        catch (Exception e) {
-            Log.e("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            if(newEmpire.getEmpireEthics()[0] != null) {
-                Class res = R.mipmap.class;
-                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ", "_"));
-                Ethic1Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("ethic_"+newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            if(newEmpire.getEmpireEthics()[1] != null) {
-                Class res = R.mipmap.class;
-                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[1].toLowerCase().replaceAll(" ", "_"));
-                Ethic2Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("ethic_"+newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            if(newEmpire.getEmpireEthics()[2] != null) {
-                Class res = R.mipmap.class;
-                Field field = res.getField("ethic_" + newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ", "_"));
-                Ethic3Icon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-            }
-        }
-        catch (Exception e) {
-            Log.e("ethic_"+newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ","_")+".png", "Failure to get drawable id.", e);
-        }
-        try {
-            Class res = R.mipmap.class;
-            Field field = res.getField("planet_" + newEmpire.getHomeworld().getType().toLowerCase());
-            PlanetIcon.setImageBitmap(BitmapFactory.decodeResource(getResources(), field.getInt(null)));
-        }
-        catch (Exception e) {
-            Log.e("planet_" + newEmpire.getHomeworld().getType().toLowerCase()+".png", "Failure to get drawable id.", e);
-        }
-        Portrait.setImageDrawable(createPortrait(newEmpire.getPortrait()[0]+newEmpire.getPortrait()[1]));
-        FlagView.setImageDrawable(generateFlag(newEmpire));
+        ShowEmpire();
     }
 
     public void generateRandomEmpire(EmpireObject newEmpire){
@@ -264,6 +79,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         String[] randomPortrait = generatePortrait();
         newEmpire.setEmpireAttributes(randomName,randomEmpireName,randomBio,randomNameList,randomCityset,randomAdvisorVoice,randomShipset,
                 randomEthics,randomTraits,randomAuthority,randomCivics, randomHomeworld, randomPortrait);
+
 
     }
     public String createMultiLineText(String[] text){
@@ -659,5 +475,104 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             Log.e(drawableName+".png", "Failure to get drawable id.", e);
         }
         return null;
+    }
+    public void ShowEmpire(){
+        Context context = getApplicationContext();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        has_utopia = sharedPref.getBoolean("has_utopia",false);
+        has_synthetic_dawn = sharedPref.getBoolean("has_synthetic_dawn",false);
+        has_humanoids = sharedPref.getBoolean("has_humanoids",false);
+        has_apocalypse = sharedPref.getBoolean("has_apocalypse",false);
+        has_plantoids = sharedPref.getBoolean("has_plantoids",false);
+        has_megacorp = sharedPref.getBoolean("has_megacorp",false);
+        EmpireViewModel mViewModel = ViewModelProviders.of(this).get(EmpireViewModel.class);
+
+        TextView EmpireName = findViewById(R.id.EmpireName);
+        TextView Name = findViewById(R.id.Name);
+        TextView Cityset = findViewById(R.id.Cityset);
+        TextView Shipset = findViewById(R.id.Shipset);
+        TextView Ethics = findViewById(R.id.Ethics);
+        TextView Trait1 = findViewById(R.id.trait1);
+        TextView Trait2 = findViewById(R.id.trait2);
+        TextView Trait3 = findViewById(R.id.trait3);
+        TextView Trait4 = findViewById(R.id.trait4);
+        TextView Trait5 = findViewById(R.id.trait5);
+        TextView Authority = findViewById(R.id.Authority);
+        TextView Civic1 = findViewById(R.id.Civic1);
+        TextView Civic2 = findViewById(R.id.Civic2);
+        TextView HomeworldType = findViewById(R.id.HomeworldType);
+        TextView HomeworldName = findViewById(R.id.HomeworldName);
+        TextView HomeworldStar = findViewById(R.id.HomeworldStar);
+        ImageView AuthImage = findViewById(R.id.authImg);
+        ImageView Trait1Icon = findViewById(R.id.trait1Icon);
+        ImageView Trait2Icon = findViewById(R.id.trait2Icon);
+        ImageView Trait3Icon = findViewById(R.id.trait3Icon);
+        ImageView Trait4Icon = findViewById(R.id.trait4Icon);
+        ImageView Trait5Icon = findViewById(R.id.trait5Icon);
+        ImageView Civic1Icon = findViewById(R.id.civic1Icon);
+        ImageView Civic2Icon = findViewById(R.id.civic2Icon);
+        ImageView Portrait = findViewById(R.id.portrait);
+        ImageView Ethic1Icon = findViewById(R.id.EthicIcon1);
+        ImageView Ethic2Icon = findViewById(R.id.EthicIcon2);
+        ImageView Ethic3Icon = findViewById(R.id.EthicIcon3);
+        ImageView PlanetIcon = findViewById(R.id.PlanetIcon);
+        ImageView FlagView = findViewById(R.id.Flag);
+        ImageButton SaveButton = findViewById(R.id.saveButton);
+        ImageButton ReloadButton = findViewById(R.id.reloadButton);
+        EmpireObject newEmpire = new EmpireObject();
+        generateRandomEmpire(newEmpire);
+        String[] EmpireAttributes = newEmpire.getEmpireAttributes();
+        EmpireName.setText(newEmpire.toString());
+        Name.setText(EmpireAttributes[0]);
+        Cityset.setText("Cityset: "+EmpireAttributes[3]);
+        Shipset.setText("Shipset: "+EmpireAttributes[5]);
+        Ethics.setText(createMultiLineText(newEmpire.getEmpireEthics()));
+        if(newEmpire.getEmpireEthics()[1] != null && newEmpire.getEmpireEthics()[0] == null)Ethics.setText(newEmpire.getEmpireEthics()[1]);
+        String[] newTraits = newEmpire.getEmpireTraits();
+        Trait1.setText(newTraits[0]);
+        Trait2.setText(newTraits[1]);
+        Trait3.setText(newTraits[2]);
+        Trait4.setText(newTraits[3]);
+        Trait5.setText(newTraits[4]);
+        Authority.setText(newEmpire.getAuthority());
+        String[] newCivics = newEmpire.getEmpireCivics();
+        Civic1.setText(newCivics[0]);
+        Civic2.setText(newCivics[1]);
+        HomeworldObject Homeworld = newEmpire.getHomeworld();
+        HomeworldType.setText(Homeworld.getType()+" World");
+        HomeworldName.setText(Homeworld.getName());
+        HomeworldStar.setText("Star: "+newEmpire.getHomeworld().getStar());
+        SaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence Savetext = "Empire Saved";
+                mViewModel.insertEmpire(newEmpire);
+                SaveButton.setClickable(false);
+                Toast SaveMsg = Toast.makeText(context,Savetext,Toast.LENGTH_SHORT);
+                SaveMsg.show();
+            }
+        });
+        ReloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(context, DisplayCreatedEmpire.class));
+                overridePendingTransition(0, 0);
+            }
+        });
+        AuthImage.setImageBitmap(getDrawable("auth_"+newEmpire.getAuthority().toLowerCase().replaceAll(" ","_")));
+        if(newTraits[0] != null) Trait1Icon.setImageBitmap(getDrawable("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_")));
+        if(newTraits[1] != null) Trait2Icon.setImageBitmap(getDrawable("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_")));
+        if(newTraits[2] != null) Trait3Icon.setImageBitmap(getDrawable("trait_" + newTraits[2].toLowerCase().replaceAll(" ","_")));
+        if(newTraits[3] != null) Trait4Icon.setImageBitmap(getDrawable("trait_" + newTraits[3].toLowerCase().replaceAll(" ","_")));
+        if(newTraits[4] != null) Trait5Icon.setImageBitmap(getDrawable("trait_" + newTraits[4].toLowerCase().replaceAll(" ","_")));
+        Civic1Icon.setImageBitmap(getDrawable("civic_" + newCivics[0].toLowerCase().replaceAll(" ","_")));
+        Civic2Icon.setImageBitmap(getDrawable("civic_" + newCivics[1].toLowerCase().replaceAll(" ","_")));
+        if(newEmpire.getEmpireEthics()[0] != null) Ethic1Icon.setImageBitmap(getDrawable("ethic_" + newEmpire.getEmpireEthics()[0].toLowerCase().replaceAll(" ", "_")));
+        if(newEmpire.getEmpireEthics()[1] != null) Ethic2Icon.setImageBitmap(getDrawable("ethic_" + newEmpire.getEmpireEthics()[1].toLowerCase().replaceAll(" ", "_")));
+        if(newEmpire.getEmpireEthics()[2] != null) Ethic3Icon.setImageBitmap(getDrawable("ethic_" + newEmpire.getEmpireEthics()[2].toLowerCase().replaceAll(" ", "_")));
+        PlanetIcon.setImageBitmap(getDrawable("planet_"+newEmpire.getHomeworld().getType().toLowerCase()));
+        Portrait.setImageDrawable(createPortrait(newEmpire.getPortrait()[0]+newEmpire.getPortrait()[1]));
+        FlagView.setImageDrawable(generateFlag(newEmpire));
     }
 }

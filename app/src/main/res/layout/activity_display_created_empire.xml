@@ -11,6 +11,7 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/DisplayCreatedEmpire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".DisplayCreatedEmpire">
@@ -347,6 +348,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/HomeworldName" />
+
         <TextView
             android:id="@+id/HomeworldStar"
             android:layout_width="wrap_content"
@@ -381,6 +383,17 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@mipmap/icon_save" />
+
+        <ImageButton
+            android:id="@+id/reloadButton"
+            android:layout_width="42dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/saveButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@mipmap/dice" />
 
 
     </android.support.constraint.ConstraintLayout>
