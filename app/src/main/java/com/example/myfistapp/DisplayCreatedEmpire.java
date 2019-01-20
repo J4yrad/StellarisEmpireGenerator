@@ -76,6 +76,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         TextView Civic2 = findViewById(R.id.Civic2);
         TextView HomeworldType = findViewById(R.id.HomeworldType);
         TextView HomeworldName = findViewById(R.id.HomeworldName);
+        TextView HomeworldStar = findViewById(R.id.HomeworldStar);
         ImageView AuthImage = findViewById(R.id.authImg);
         ImageView Trait1Icon = findViewById(R.id.trait1Icon);
         ImageView Trait2Icon = findViewById(R.id.trait2Icon);
@@ -113,6 +114,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
         HomeworldObject Homeworld = newEmpire.getHomeworld();
         HomeworldType.setText(Homeworld.getType()+" World");
         HomeworldName.setText(Homeworld.getName());
+        HomeworldStar.append(newEmpire.getHomeworld().getStar());
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -282,7 +284,7 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
             int random = new Random().nextInt(100);
             if(random < 14){
                 Ethics[1] = "Gestalt Consciousness";
-                random = new Random().nextInt(1);
+                random = new Random().nextInt(2);
                 if (random == 1 && has_synthetic_dawn) MachineEmpire = true;
                 else if (random == 1 && !has_synthetic_dawn) HiveMind = true;
                 else if (random == 0 && !has_utopia) MachineEmpire = true;
@@ -622,15 +624,23 @@ public class DisplayCreatedEmpire extends AppCompatActivity {
 
     }
     public Drawable generateFlag(EmpireObject newEmpire){
+        int bound = 149;
         int color1 = new Random().nextInt(20);
         int color2 = new Random().nextInt(20);
+        if(color1 == color2 && color2 == 19) color2 = 18;
+        else if(color1 == color2) color2 += 1;
+        if(has_megacorp) bound +=6;
         String background = String.valueOf(new Random().nextInt(13));
-        String icon = String.valueOf(new Random().nextInt(24));
+        String icon = String.valueOf(new Random().nextInt(bound));
+        if(Integer.parseInt(icon)>= 149){
+            icon = "flag_icon_corporate_"+String.valueOf(new Random().nextInt(6));
+        }
+        else icon = "flag_icon_"+icon;
         ColorFilter BackgroundMain = new PorterDuffColorFilter(getResources().getColor(getResources().getIdentifier("color_"+String.valueOf(color1), "color", getPackageName())),PorterDuff.Mode.MULTIPLY);
         ColorFilter BackgroundSecondary = new PorterDuffColorFilter(getResources().getColor(getResources().getIdentifier("color_"+String.valueOf(color2), "color", getPackageName())),PorterDuff.Mode.MULTIPLY);
         BitmapDrawable d1 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),R.mipmap.flag_background_main));
         BitmapDrawable d2 = new BitmapDrawable(getResources(),getDrawable("flag_background_"+background));
-        BitmapDrawable d3 = new BitmapDrawable(getResources(),getDrawable("flag_icon_"+icon));
+        BitmapDrawable d3 = new BitmapDrawable(getResources(),getDrawable(icon));
         d1.setColorFilter(BackgroundMain);
         d2.setColorFilter(BackgroundSecondary);
         Drawable drawableArray[]= new Drawable[]{d1,d2,d3};

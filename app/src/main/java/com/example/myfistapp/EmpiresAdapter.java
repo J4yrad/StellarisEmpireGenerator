@@ -113,7 +113,7 @@ public class EmpiresAdapter extends RecyclerView.Adapter<EmpiresAdapter.ViewHold
         BitmapDrawable FlagIcon = null;
         try {
             Class res = R.mipmap.class;
-            Field field = res.getField("flag_icon_"+Flag[3]);
+            Field field = res.getField(Flag[3]);
             FlagIcon = new BitmapDrawable(viewHolder.itemView.getResources(),BitmapFactory.decodeResource(viewHolder.itemView.getResources(),field.getInt(null)));
         }
         catch (Exception e) {

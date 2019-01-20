@@ -144,6 +144,11 @@
       "EmpireName": "SPECIES_NAME Exterminators",
       "RequiredAuthority":[],
       "RequiredCivics":["Fanatic Purifier"]
+    },
+    {
+      "EmpireName": "SPECIES_NAME Network",
+      "RequiredAuthority":["Machine Intelligence"],
+      "RequiredCivics":[]
     }
   ]
 }

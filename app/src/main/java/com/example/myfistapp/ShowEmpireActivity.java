@@ -56,6 +56,7 @@ public class ShowEmpireActivity extends AppCompatActivity {
         TextView Civic2 = findViewById(R.id.Civic2);
         TextView HomeworldType = findViewById(R.id.HomeworldType);
         TextView HomeworldName = findViewById(R.id.HomeworldName);
+        TextView HomeworldStar = findViewById(R.id.HomeworldStar);
         ImageView AuthImage = findViewById(R.id.authImg);
         ImageView Trait1Icon = findViewById(R.id.trait1Icon);
         ImageView Trait2Icon = findViewById(R.id.trait2Icon);
@@ -89,6 +90,7 @@ public class ShowEmpireActivity extends AppCompatActivity {
         HomeworldObject Homeworld = currentEmpire.getHomeworld();
         HomeworldType.setText(Homeworld.getType()+" World");
         HomeworldName.setText(Homeworld.getName());
+        HomeworldStar.append(currentEmpire.getHomeworld().getStar());
         AuthImage.setImageBitmap(getDrawable("auth_"+currentEmpire.getAuthority().toLowerCase().replaceAll(" ","_")));
         if(newTraits[0] != null) Trait1Icon.setImageBitmap(getDrawable("trait_" + newTraits[0].toLowerCase().replaceAll(" ","_")));
         if(newTraits[1] != null) Trait2Icon.setImageBitmap(getDrawable("trait_" + newTraits[1].toLowerCase().replaceAll(" ","_")));
@@ -150,7 +152,7 @@ public class ShowEmpireActivity extends AppCompatActivity {
         ColorFilter BackgroundSecondary = new PorterDuffColorFilter(getResources().getColor(getResources().getIdentifier("color_"+color2, "color", getPackageName())),PorterDuff.Mode.MULTIPLY);
         BitmapDrawable d1 = new BitmapDrawable(getResources(),BitmapFactory.decodeResource(getResources(),R.mipmap.flag_background_main));
         BitmapDrawable d2 = new BitmapDrawable(getResources(),getDrawable("flag_background_"+background));
-        BitmapDrawable d3 = new BitmapDrawable(getResources(),getDrawable("flag_icon_"+icon));
+        BitmapDrawable d3 = new BitmapDrawable(getResources(),getDrawable(icon));
         d1.setColorFilter(BackgroundMain);
         d2.setColorFilter(BackgroundSecondary);
         Drawable drawableArray[]= new Drawable[]{d1,d2,d3};

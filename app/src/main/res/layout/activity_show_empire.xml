@@ -97,7 +97,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/HomeworldType" />
+            app:layout_constraintTop_toBottomOf="@+id/HomeworldStar" />
 
         <TextView
             android:id="@+id/Civic1"
@@ -347,6 +347,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/HomeworldName" />
+        <TextView
+            android:id="@+id/HomeworldStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Star: "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HomeworldType" />
 
         <ImageView
             android:id="@+id/Flag"
