@@ -1,4 +1,4 @@
-package Stellaris.Empire.Generator;
+package stellaris.empire.generator;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;

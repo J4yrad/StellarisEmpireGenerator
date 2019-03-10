@@ -1,4 +1,4 @@
-package Stellaris.Empire.Generator;
+package stellaris.empire.generator;
 
 import org.junit.Test;
 

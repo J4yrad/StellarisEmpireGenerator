@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="Stellaris.Empire.Generator">
+    package="stellaris.empire.generator">
 
     <application
         android:allowBackup="true"
@@ -9,34 +9,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="stellaris.empire.generator.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayCreatedEmpire" />
+        <activity android:name="stellaris.empire.generator.DisplayCreatedEmpire" />
         <activity
-            android:name=".ViewAllEmpires"
+            android:name="stellaris.empire.generator.ViewAllEmpires"
             android:label="@string/title_activity_view_all_empires"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="stellaris.empire.generator.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Stellaris.Empire.Generator.MainActivity" />
+                android:value="stellaris.empire.generator.MainActivity" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name="stellaris.empire.generator.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".ShowEmpireActivity"
+            android:name="stellaris.empire.generator.ShowEmpireActivity"
             android:label="@string/title_activity_show_empire"
-            android:parentActivityName=".ViewAllEmpires"
+            android:parentActivityName="stellaris.empire.generator.ViewAllEmpires"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Stellaris.Empire.Generator.ViewAllEmpires" />
+                android:value="stellaris.empire.generator.ViewAllEmpires" />
         </activity>
     </application>
 

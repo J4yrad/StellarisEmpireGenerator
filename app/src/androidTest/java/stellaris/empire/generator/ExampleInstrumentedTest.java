@@ -1,4 +1,4 @@
-package Stellaris.Empire.Generator;
+package stellaris.empire.generator;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

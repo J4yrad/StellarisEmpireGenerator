@@ -1,4 +1,4 @@
-package Stellaris.Empire.Generator;
+package stellaris.empire.generator;
 
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;
